@@ -83,6 +83,8 @@ export default function PublicLayout({ children, title, description, ogType, ogI
                 <title>{title || 'AutoGalería — Seminuevos de Calidad'}</title>
                 <meta name="description" content={description || 'AutoGalería — Los mejores seminuevos en Gómez Palacio, Durango.'} />
                 <meta name="robots" content="index, follow" />
+                <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+                <link rel="shortcut icon" href="/favicon.ico" />
                 {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
                 <meta property="og:type" content={ogType || 'website'} />
                 <meta property="og:site_name" content="AutoGalería" />

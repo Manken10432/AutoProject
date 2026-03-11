@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link, useForm } from '@inertiajs/react';
 import AdminLayout from '@/Layouts/AdminLayout';
 
@@ -21,6 +22,22 @@ export default function AdminVehiclesCreate() {
         fuel_type: '', transmission: '', color: '', status: 'available',
         featured: false, description: '', images: [],
     });
+    const [previews, setPreviews] = useState([]);
+
+    useEffect(() => () => previews.forEach(URL.revokeObjectURL), [previews]);
+
+    const handleFiles = (files) => {
+        const arr = Array.from(files);
+        setData('images', arr);
+        setPreviews(arr.map(f => URL.createObjectURL(f)));
+    };
+
+    const removeFile = (index) => {
+        URL.revokeObjectURL(previews[index]);
+        const newFiles = data.images.filter((_, i) => i !== index);
+        setData('images', newFiles);
+        setPreviews(p => p.filter((_, i) => i !== index));
+    };
 
     const submit = (e) => {
         e.preventDefault();
@@ -121,19 +138,34 @@ export default function AdminVehiclesCreate() {
                             <div style={{ width: 3, height: 18, background: '#C3002F' }} />
                             <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>IMÁGENES</h2>
                         </div>
-                        <div style={{ border: '1px dashed #2a2a2a', padding: '2rem', textAlign: 'center', background: '#111' }}>
-                            <input
-                                type="file"
-                                name="images[]"
-                                multiple
-                                accept="image/jpeg,image/png,image/jpg,image/webp"
-                                style={{ display: 'block', margin: '0 auto', fontSize: '0.875rem', color: '#888' }}
-                                onChange={e => setData('images', Array.from(e.target.files))}
-                            />
-                            <p style={{ color: '#333', fontSize: '0.72rem', marginTop: '0.75rem', fontFamily: "'DM Sans', sans-serif" }}>
-                                JPG, PNG, WebP · Máx. 5MB por imagen
-                            </p>
-                        </div>
+
+                        {/* Preview grid */}
+                        {previews.length > 0 && (
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '0.5rem', marginBottom: '1rem' }}>
+                                {previews.map((src, i) => (
+                                    <div key={i} style={{ position: 'relative', height: 90, border: '1px solid #2a2a2a', overflow: 'hidden' }}>
+                                        <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                        <button
+                                            type="button"
+                                            onClick={() => removeFile(i)}
+                                            style={{ position: 'absolute', top: 4, right: 4, background: 'rgba(0,0,0,0.75)', border: 'none', borderRadius: '50%', width: 22, height: 22, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.75rem', lineHeight: 1 }}
+                                        >✕</button>
+                                        {i === 0 && <span style={{ position: 'absolute', bottom: 4, left: 4, background: '#C3002F', color: '#fff', fontSize: '0.55rem', fontWeight: 700, padding: '0.1rem 0.4rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Principal</span>}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        <label style={{ display: 'block', border: '1px dashed #2a2a2a', padding: '1.5rem', textAlign: 'center', background: '#111', cursor: 'pointer' }}>
+                            <svg width="24" height="24" fill="none" stroke="#444" strokeWidth={1.5} viewBox="0 0 24 24" style={{ margin: '0 auto 0.5rem' }}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                            </svg>
+                            <span style={{ color: '#888', fontSize: '0.8125rem', fontFamily: "'DM Sans', sans-serif" }}>
+                                {previews.length > 0 ? `${previews.length} imagen(es) seleccionada(s) · Clic para cambiar` : 'Clic para seleccionar imágenes'}
+                            </span>
+                            <p style={{ color: '#333', fontSize: '0.7rem', marginTop: '0.375rem', fontFamily: "'DM Sans', sans-serif" }}>JPG, PNG, WebP · Máx. 5MB · La primera imagen será la principal</p>
+                            <input type="file" name="images[]" multiple accept="image/jpeg,image/png,image/jpg,image/webp" style={{ display: 'none' }} onChange={e => handleFiles(e.target.files)} />
+                        </label>
                         {errors.images && <p style={{ color: '#ff4d6a', fontSize: '0.75rem', marginTop: '0.375rem' }}>{errors.images}</p>}
                     </div>
 

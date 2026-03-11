@@ -107,6 +107,21 @@ class VehicleController extends Controller
         return redirect()->route('admin.vehiculos.index')->with('success', 'Vehículo eliminado.');
     }
 
+    public function removeImage($id, $index)
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        $images = $vehicle->images ?? [];
+
+        if (isset($images[$index])) {
+            $path = ltrim(str_replace('/storage', '', $images[$index]), '/');
+            Storage::disk('public')->delete($path);
+            array_splice($images, $index, 1);
+            $vehicle->update(['images' => array_values($images)]);
+        }
+
+        return back()->with('success', 'Imagen eliminada.');
+    }
+
     public function toggleFeatured($id)
     {
         $vehicle = Vehicle::findOrFail($id);

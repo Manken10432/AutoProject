@@ -27,4 +27,5 @@ Route::prefix('admin')->name('admin.')->middleware('admin.auth')->group(function
     Route::resource('vehiculos', Admin\VehicleController::class);
     Route::patch('vehiculos/{id}/featured', [Admin\VehicleController::class, 'toggleFeatured'])->name('vehiculos.featured');
     Route::patch('vehiculos/{id}/status', [Admin\VehicleController::class, 'toggleStatus'])->name('vehiculos.status');
+    Route::delete('vehiculos/{id}/imagen/{index}', [Admin\VehicleController::class, 'removeImage'])->name('vehiculos.imagen.destroy');
 });

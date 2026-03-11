@@ -285,6 +285,34 @@ El flujo ideal del usuario es:
 - Las páginas de vehículos ya tenían `<lastmod>` con `updated_at`
 
 #### Pendiente
-- Subir imágenes reales desde el panel admin
-- Cambiar contraseña admin a variable de entorno (`.env`)
-- Considerar migración a PostgreSQL para producción
+- ~~Subir imágenes reales desde el panel admin~~ ✅
+- ~~Cambiar contraseña admin a variable de entorno (`.env`)~~ ✅
+- ~~Considerar migración a PostgreSQL para producción~~ ✅
+
+---
+
+### Sesión 4 — 2026-03-11
+
+**Estado: Subida de imágenes, bugs y PostgreSQL ✅**
+
+#### Subida de imágenes en panel admin
+- **Create.jsx** — zona de carga con ícono, preview en grid antes de subir, badge "Principal" en primera imagen, botón ✕ para quitar archivos antes de enviar
+- **Edit.jsx** — imágenes existentes con botón ✕ que elimina directamente del servidor (confirm dialog), preview de nuevas imágenes a agregar
+- **Backend** — nuevo endpoint `DELETE /admin/vehiculos/{id}/imagen/{index}` → `VehicleController::removeImage()` borra del disco y actualiza JSON
+
+#### Bugs corregidos
+- **Navbar desktop siempre visible** — inline `style={{ display: 'flex' }}` pisaba el `className="hidden md:flex"` de Tailwind. Eliminado el `display` del inline style.
+- **Hero recortado en mobile** — `align-items: center` + `overflow: hidden` recortaba contenido en pantallas cortas. Cambiado a `flex-start` y padding responsive con Tailwind (`pt-24 pb-12 md:pt-36 md:pb-24`).
+- **Barra búsqueda alineada a la derecha en mobile** — `items-end` → `md:items-end`.
+- **Imágenes lentas/invisibles en inventario** — `loading="lazy"` combinado con `ScrollReveal` (opacity:0) impedía que el browser cargara las imágenes. Eliminado lazy loading, añadido `onError`.
+- **Cards negros al filtrar** — `ScrollReveal` con `IntersectionObserver` disparaba de forma asíncrona causando un frame negro. Reemplazado por animación CSS directa (`heroFadeUp`).
+- **Inputs pierden foco al escribir** — `SidebarSection` definido dentro del componente se redefinía en cada `setForm`. Movido fuera del componente.
+- **Inputs de año sin límite de caracteres** — agregada validación `length <= 4` en `onChange`.
+
+#### PostgreSQL para producción
+- Migraciones verificadas: 100% compatibles con PostgreSQL (tipos abstractos de Laravel)
+- `.env.example` actualizado con config SQLite (desarrollo) y PostgreSQL (producción) documentadas
+- Para producción: cambiar `DB_CONNECTION=pgsql` y completar credenciales en `.env`
+
+#### Pendiente
+- No hay ítems pendientes de sesiones anteriores. El proyecto está listo para producción con imágenes reales.

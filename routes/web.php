@@ -12,13 +12,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/seminuevos', [VehicleController::class, 'index'])->name('vehicles.index');
 Route::get('/seminuevos/{id}', [VehicleController::class, 'show'])->name('vehicles.show');
 Route::get('/cotizacion', [ContactController::class, 'index'])->name('contact.index');
-Route::post('/cotizacion', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/cotizacion', [ContactController::class, 'store'])->name('contact.store')->middleware('throttle:contact');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::get('/robots.txt', [SitemapController::class, 'robots'])->name('robots');
 
 // Admin auth
 Route::get('/admin/login', [Admin\AuthController::class, 'showLogin'])->name('admin.login');
-Route::post('/admin/login', [Admin\AuthController::class, 'login'])->name('admin.login.post');
+Route::post('/admin/login', [Admin\AuthController::class, 'login'])->name('admin.login.post')->middleware('throttle:admin-login');
 Route::post('/admin/logout', [Admin\AuthController::class, 'logout'])->name('admin.logout');
 
 // Admin protected

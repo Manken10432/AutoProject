@@ -2,23 +2,32 @@
 
 namespace App\Providers;
 
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        //
+        RateLimiter::for('contact', function (Request $request) {
+            return Limit::perMinute(5)->by($request->ip())
+                ->response(fn () => back()->withErrors([
+                    'rate_limit' => 'Demasiados intentos. Espera un momento antes de enviar otro mensaje.',
+                ]));
+        });
+
+        RateLimiter::for('admin-login', function (Request $request) {
+            return Limit::perMinute(10)->by($request->ip())
+                ->response(fn () => back()->withErrors([
+                    'password' => 'Demasiados intentos. Intenta de nuevo en un minuto.',
+                ]));
+        });
     }
 }

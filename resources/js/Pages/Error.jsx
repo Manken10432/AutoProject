@@ -49,7 +49,7 @@ export default function Error({ status }) {
                     {code}
                 </div>
 
-                <div style={{ width: 40, height: 3, background: '#C3002F', margin: '0 auto 1.5rem' }} />
+                <div style={{ width: 40, height: 3, background: '#F5C518', margin: '0 auto 1.5rem' }} />
 
                 <h1 style={{
                     fontFamily: "'Bebas Neue', sans-serif",
@@ -80,7 +80,7 @@ export default function Error({ status }) {
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
                         color: '#f0f0f0',
-                        background: '#C3002F',
+                        background: '#F5C518',
                         padding: '0.875rem 2rem',
                         textDecoration: 'none',
                         display: 'inline-block',

@@ -9,7 +9,7 @@
 <body style="background-color:#1a1a1a;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Helvetica Neue',Arial,sans-serif;">
     <div style="width:100%;max-width:400px;padding:1rem;">
         <div style="text-align:center;margin-bottom:2rem;">
-            <span style="color:#C3002F;font-size:1.75rem;font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;">Auto<span style="color:#fff;">Galería</span></span>
+            <span style="color:#F5C518;font-size:1.75rem;font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;">Auto<span style="color:#fff;">Galería</span></span>
             <p style="color:#999;font-size:0.875rem;margin-top:0.5rem;text-transform:uppercase;letter-spacing:0.1em;">Panel de Administración</p>
         </div>
 
@@ -42,7 +42,7 @@
         </div>
 
         <p style="text-align:center;margin-top:1.5rem;">
-            <a href="{{ route('home') }}" style="color:#666;font-size:0.8125rem;text-decoration:none;" onmouseover="this.style.color='#C3002F'" onmouseout="this.style.color='#666'">&larr; Volver al sitio</a>
+            <a href="{{ route('home') }}" style="color:#666;font-size:0.8125rem;text-decoration:none;" onmouseover="this.style.color='#F5C518'" onmouseout="this.style.color='#666'">&larr; Volver al sitio</a>
         </p>
     </div>
 </body>

@@ -24,25 +24,44 @@ function CatalogCard({ vehicle, index }) {
                         />
                         {vehicle.status === 'sold' && (
                             <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <span style={{ background: '#C3002F', color: '#fff', fontFamily: "'DM Sans', sans-serif", fontWeight: 700, textTransform: 'uppercase', padding: '0.35rem 1rem', letterSpacing: '0.1em', fontSize: '0.75rem' }}>VENDIDO</span>
+                                <span style={{ background: '#F5C518', color: '#fff', fontFamily: "'DM Sans', sans-serif", fontWeight: 700, textTransform: 'uppercase', padding: '0.35rem 1rem', letterSpacing: '0.1em', fontSize: '0.75rem' }}>VENDIDO</span>
                             </div>
                         )}
                         {vehicle.featured && (
                             <div style={{ position: 'absolute', top: '0.625rem', left: '0.625rem' }}>
-                                <span style={{ background: '#C3002F', color: '#fff', fontFamily: "'DM Sans', sans-serif", fontSize: '0.62rem', fontWeight: 700, textTransform: 'uppercase', padding: '0.2rem 0.5rem', letterSpacing: '0.06em' }}>DESTACADO</span>
+                                <span style={{ background: '#F5C518', color: '#fff', fontFamily: "'DM Sans', sans-serif", fontSize: '0.62rem', fontWeight: 700, textTransform: 'uppercase', padding: '0.2rem 0.5rem', letterSpacing: '0.06em' }}>DESTACADO</span>
                             </div>
                         )}
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%)', opacity: 0, transition: 'opacity 0.3s ease' }} className="group-hover:opacity-100" />
                     </div>
                     <div style={{ padding: '1.125rem 1.25rem 1.375rem' }}>
-                        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.62rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', color: '#C3002F', marginBottom: '0.3rem' }}>
+                        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.62rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', color: '#F5C518', marginBottom: '0.3rem' }}>
                             {vehicle.brand}
                         </div>
                         <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.125rem', letterSpacing: '0.04em', color: '#f0f0f0', marginBottom: '0.5rem', lineHeight: 1.1 }}>
                             {vehicle.year} {vehicle.model}
                         </h3>
-                        <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.375rem', color: '#C3002F', letterSpacing: '0.03em', marginBottom: '0.75rem' }}>
-                            ${Number(vehicle.price).toLocaleString('es-MX')}
+                        <div style={{ marginBottom: '0.75rem' }}>
+                            {vehicle.monthly_payment ? (
+                                <div>
+                                    <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.375rem', color: '#F5C518', letterSpacing: '0.03em', lineHeight: 1 }}>
+                                        ${Number(vehicle.monthly_payment).toLocaleString('es-MX')}<span style={{ fontSize: '0.8rem', color: '#888' }}>/mes</span>
+                                    </div>
+                                    {vehicle.down_payment && (
+                                        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.7rem', color: '#666', marginTop: '0.2rem' }}>
+                                            Enganche ${Number(vehicle.down_payment).toLocaleString('es-MX')}
+                                        </div>
+                                    )}
+                                </div>
+                            ) : vehicle.price ? (
+                                <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.375rem', color: '#F5C518', letterSpacing: '0.03em' }}>
+                                    ${Number(vehicle.price).toLocaleString('es-MX')}
+                                </div>
+                            ) : (
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.8rem', color: '#888' }}>
+                                    Consultar precio
+                                </div>
+                            )}
                         </div>
                         <div style={{ display: 'flex', gap: '0.75rem', fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#555', borderTop: '1px solid #1c1c1c', paddingTop: '0.75rem', flexWrap: 'wrap' }}>
                             <span>{Number(vehicle.mileage).toLocaleString('es-MX')} km</span>
@@ -128,26 +147,26 @@ export default function VehiclesIndex({ vehicles, brands, years, filters = {} })
                 background: `linear-gradient(105deg, rgba(0,0,0,0.97) 40%, rgba(0,0,0,0.75) 70%, rgba(0,0,0,0.4) 100%), url('https://images.unsplash.com/photo-1552519491-37d8564f8fc4?w=1600&q=80') center/cover no-repeat`,
             }}>
                 {/* Left red bar */}
-                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 3, background: '#C3002F' }} />
+                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 3, background: '#F5C518' }} />
                 <div className="max-w-7xl mx-auto px-8" style={{ position: 'relative', zIndex: 1 }}>
                     {/* Breadcrumb */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
                         <Link href={route('home')} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', color: '#555', textDecoration: 'none', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Inicio</Link>
                         <span style={{ color: '#333' }}>/</span>
-                        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', color: '#C3002F', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Seminuevos</span>
+                        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', color: '#F5C518', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Seminuevos</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
                         <div>
-                            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C3002F', marginBottom: '0.5rem' }}>
+                            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#F5C518', marginBottom: '0.5rem' }}>
                                 AutoGalería — Gómez Palacio
                             </div>
                             <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(2.5rem,6vw,4rem)', letterSpacing: '0.03em', color: '#f0f0f0', lineHeight: 0.9 }}>
                                 INVENTARIO<br />
-                                <span style={{ color: '#C3002F' }}>SEMINUEVOS</span>
+                                <span style={{ color: '#F5C518' }}>SEMINUEVOS</span>
                             </h1>
                         </div>
                         <div style={{ textAlign: 'right' }}>
-                            <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '2.5rem', color: '#C3002F', lineHeight: 1, letterSpacing: '0.02em' }}>
+                            <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '2.5rem', color: '#F5C518', lineHeight: 1, letterSpacing: '0.02em' }}>
                                 {vehicles.total}
                             </div>
                             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#555' }}>
@@ -189,7 +208,7 @@ export default function VehiclesIndex({ vehicles, brands, years, filters = {} })
                                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.75rem' }}>
                                             <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.125rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>FILTROS</span>
                                             {hasFilters && (
-                                                <button type="button" onClick={clearFilters} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#C3002F', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                                                <button type="button" onClick={clearFilters} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#F5C518', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
                                                     Limpiar
                                                 </button>
                                             )}
@@ -300,9 +319,9 @@ export default function VehiclesIndex({ vehicles, brands, years, filters = {} })
                                                         style={{
                                                             display: 'inline-flex', alignItems: 'center', padding: '0.4rem 0.75rem',
                                                             fontFamily: "'DM Sans', sans-serif", fontSize: '0.8125rem', fontWeight: 600,
-                                                            background: link.active ? '#C3002F' : '#141414',
+                                                            background: link.active ? '#F5C518' : '#141414',
                                                             color: link.active ? '#fff' : '#555',
-                                                            border: `1px solid ${link.active ? '#C3002F' : '#2a2a2a'}`,
+                                                            border: `1px solid ${link.active ? '#F5C518' : '#2a2a2a'}`,
                                                             textDecoration: 'none',
                                                             transition: 'all 0.15s',
                                                         }}

@@ -6,12 +6,12 @@
 @section('content')
 
 {{-- PAGE HERO --}}
-<div style="background-color:#1a1a1a;padding:2.5rem 0;border-bottom:4px solid #C3002F;">
+<div style="background-color:#1a1a1a;padding:2.5rem 0;border-bottom:4px solid #F5C518;">
     <div class="max-w-7xl mx-auto px-4">
         <div style="display:flex;align-items:center;gap:0.5rem;color:#999;font-size:0.8125rem;margin-bottom:0.75rem;">
             <a href="{{ route('home') }}" style="color:#999;text-decoration:none;hover:color:#fff;">Inicio</a>
             <span>&rsaquo;</span>
-            <span style="color:#C3002F;">Seminuevos</span>
+            <span style="color:#F5C518;">Seminuevos</span>
         </div>
         <h1 style="color:#ffffff;font-size:clamp(1.5rem,4vw,2.25rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;">
             Inventario de Seminuevos
@@ -43,10 +43,10 @@
             <form action="{{ route('vehicles.index') }}" method="GET" id="filter-form">
 
                 <div style="background:#fff;border:1px solid #e5e7eb;padding:1.5rem;">
-                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:2px solid #C3002F;">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:2px solid #F5C518;">
                         <h3 style="font-weight:700;font-size:0.9375rem;text-transform:uppercase;letter-spacing:0.05em;color:#333;">Filtros</h3>
                         @if(request()->hasAny(['brand','year_min','year_max','price_min','price_max','fuel_type','transmission']))
-                        <a href="{{ route('vehicles.index') }}" style="font-size:0.75rem;color:#C3002F;text-decoration:none;font-weight:600;">Limpiar</a>
+                        <a href="{{ route('vehicles.index') }}" style="font-size:0.75rem;color:#F5C518;text-decoration:none;font-weight:600;">Limpiar</a>
                         @endif
                     </div>
 
@@ -158,7 +158,7 @@
                              loading="lazy">
                         @if($vehicle->featured)
                         <div style="position:absolute;top:0.6rem;left:0.6rem;">
-                            <span style="background:#C3002F;color:#fff;font-size:0.65rem;font-weight:700;text-transform:uppercase;padding:0.2rem 0.5rem;letter-spacing:0.05em;">Destacado</span>
+                            <span style="background:#F5C518;color:#fff;font-size:0.65rem;font-weight:700;text-transform:uppercase;padding:0.2rem 0.5rem;letter-spacing:0.05em;">Destacado</span>
                         </div>
                         @endif
                     </div>
@@ -166,7 +166,7 @@
                         <h3 style="font-size:0.9375rem;font-weight:700;text-transform:uppercase;color:#333;letter-spacing:0.02em;margin-bottom:0.375rem;line-height:1.3;">
                             {{ $vehicle->year }} {{ $vehicle->brand }} {{ $vehicle->model }}
                         </h3>
-                        <div style="font-size:1.3rem;font-weight:900;color:#C3002F;margin-bottom:0.6rem;">
+                        <div style="font-size:1.3rem;font-weight:900;color:#F5C518;margin-bottom:0.6rem;">
                             ${{ number_format($vehicle->price, 0, '.', ',') }}
                         </div>
                         <div style="display:flex;gap:0.875rem;color:#666;font-size:0.8rem;margin-bottom:1rem;flex-wrap:wrap;">

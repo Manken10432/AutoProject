@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </td>
-                    <td style="padding:0.875rem 1rem;font-weight:700;color:#C3002F;">${{ number_format($vehicle->price, 0, '.', ',') }}</td>
+                    <td style="padding:0.875rem 1rem;font-weight:700;color:#F5C518;">${{ number_format($vehicle->price, 0, '.', ',') }}</td>
                     <td style="padding:0.875rem 1rem;color:#555;">{{ number_format($vehicle->mileage, 0, '.', ',') }}</td>
                     <td style="padding:0.875rem 1rem;">
                         <form action="{{ route('admin.vehiculos.status', $vehicle->id) }}" method="POST" style="display:inline;">
@@ -93,7 +93,7 @@
                 @empty
                 <tr>
                     <td colspan="7" style="padding:3rem;text-align:center;color:#999;">
-                        No hay vehículos registrados. <a href="{{ route('admin.vehiculos.create') }}" style="color:#C3002F;">Agregar uno ahora</a>.
+                        No hay vehículos registrados. <a href="{{ route('admin.vehiculos.create') }}" style="color:#F5C518;">Agregar uno ahora</a>.
                     </td>
                 </tr>
                 @endforelse

@@ -51,9 +51,9 @@ export default function AdminLayout({ children, title = 'Dashboard', pageTitle =
                     {/* Brand */}
                     <div style={{ padding: '1.5rem 1.25rem', borderBottom: '1px solid #1c1c1c' }}>
                         <Link href={route('admin.dashboard')} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
-                            <div style={{ width: 3, height: 22, background: '#C3002F', flexShrink: 0 }} />
+                            <div style={{ width: 3, height: 22, background: '#F5C518', flexShrink: 0 }} />
                             <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.25rem', letterSpacing: '0.06em', color: '#fff', lineHeight: 1 }}>
-                                AUTO<span style={{ color: '#C3002F' }}>GALERÍA</span>
+                                AUTO<span style={{ color: '#F5C518' }}>GALERÍA</span>
                             </span>
                         </Link>
                         <p style={{ fontSize: '0.625rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#333', marginTop: '0.375rem', paddingLeft: '0.875rem' }}>

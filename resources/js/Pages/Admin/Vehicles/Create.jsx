@@ -18,7 +18,7 @@ const Field = ({ label, error, span2 = false, children }) => (
 
 export default function AdminVehiclesCreate() {
     const { data, setData, post, processing, errors } = useForm({
-        brand: '', model: '', year: CURRENT_YEAR, price: '', mileage: '',
+        brand: '', model: '', year: CURRENT_YEAR, price: '', down_payment: '', monthly_payment: '', mileage: '',
         fuel_type: '', transmission: '', color: '', status: 'available',
         featured: false, description: '', images: [],
     });
@@ -50,7 +50,7 @@ export default function AdminVehiclesCreate() {
         <AdminLayout title="Agregar Vehículo" pageTitle="Agregar Vehículo">
             <div style={{ maxWidth: 820 }}>
                 <div style={{ marginBottom: '1.25rem' }}>
-                    <Link href={route('admin.vehiculos.index')} style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#C3002F', textDecoration: 'none' }}>
+                    <Link href={route('admin.vehiculos.index')} style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#F5C518', textDecoration: 'none' }}>
                         &larr; Volver a Vehículos
                     </Link>
                 </div>
@@ -68,7 +68,7 @@ export default function AdminVehiclesCreate() {
                     {/* Main fields */}
                     <div style={{ background: '#141414', border: '1px solid #1c1c1c', padding: '1.75rem', marginBottom: '1px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '1.5rem' }}>
-                            <div style={{ width: 3, height: 18, background: '#C3002F' }} />
+                            <div style={{ width: 3, height: 18, background: '#F5C518' }} />
                             <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>
                                 INFORMACIÓN DEL VEHÍCULO
                             </h2>
@@ -83,8 +83,14 @@ export default function AdminVehiclesCreate() {
                             <Field label="Año *" error={errors.year}>
                                 <input type="number" className="form-input" value={data.year} onChange={e => setData('year', e.target.value)} min="1990" max={CURRENT_YEAR + 1} required />
                             </Field>
-                            <Field label="Precio MXN *" error={errors.price}>
-                                <input type="number" className="form-input" value={data.price} onChange={e => setData('price', e.target.value)} min="0" step="1000" placeholder="350000" required />
+                            <Field label="Enganche MXN" error={errors.down_payment}>
+                                <input type="number" className="form-input" value={data.down_payment} onChange={e => setData('down_payment', e.target.value)} min="0" step="500" placeholder="15000" />
+                            </Field>
+                            <Field label="Mensualidad MXN" error={errors.monthly_payment}>
+                                <input type="number" className="form-input" value={data.monthly_payment} onChange={e => setData('monthly_payment', e.target.value)} min="0" step="100" placeholder="4000" />
+                            </Field>
+                            <Field label="Precio contado MXN" error={errors.price}>
+                                <input type="number" className="form-input" value={data.price} onChange={e => setData('price', e.target.value)} min="0" step="1000" placeholder="350000" />
                             </Field>
                             <Field label="Kilometraje *" error={errors.mileage}>
                                 <input type="number" className="form-input" value={data.mileage} onChange={e => setData('mileage', e.target.value)} min="0" placeholder="25000" required />
@@ -111,7 +117,7 @@ export default function AdminVehiclesCreate() {
                                 </select>
                             </Field>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', paddingTop: '1.5rem' }}>
-                                <input type="checkbox" id="featured" checked={data.featured} onChange={e => setData('featured', e.target.checked)} style={{ width: '1.125rem', height: '1.125rem', accentColor: '#C3002F', cursor: 'pointer' }} />
+                                <input type="checkbox" id="featured" checked={data.featured} onChange={e => setData('featured', e.target.checked)} style={{ width: '1.125rem', height: '1.125rem', accentColor: '#F5C518', cursor: 'pointer' }} />
                                 <label htmlFor="featured" style={{ fontWeight: 600, color: '#888', fontSize: '0.875rem', cursor: 'pointer' }}>Marcar como Destacado</label>
                             </div>
                         </div>
@@ -120,7 +126,7 @@ export default function AdminVehiclesCreate() {
                     {/* Description */}
                     <div style={{ background: '#141414', border: '1px solid #1c1c1c', borderTop: '1px solid #1a1a1a', padding: '1.75rem', marginBottom: '1px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '1.25rem' }}>
-                            <div style={{ width: 3, height: 18, background: '#C3002F' }} />
+                            <div style={{ width: 3, height: 18, background: '#F5C518' }} />
                             <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>DESCRIPCIÓN</h2>
                         </div>
                         <textarea
@@ -135,7 +141,7 @@ export default function AdminVehiclesCreate() {
                     {/* Images */}
                     <div style={{ background: '#141414', border: '1px solid #1c1c1c', borderTop: '1px solid #1a1a1a', padding: '1.75rem', marginBottom: '1.5rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '1.25rem' }}>
-                            <div style={{ width: 3, height: 18, background: '#C3002F' }} />
+                            <div style={{ width: 3, height: 18, background: '#F5C518' }} />
                             <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>IMÁGENES</h2>
                         </div>
 
@@ -150,7 +156,7 @@ export default function AdminVehiclesCreate() {
                                             onClick={() => removeFile(i)}
                                             style={{ position: 'absolute', top: 4, right: 4, background: 'rgba(0,0,0,0.75)', border: 'none', borderRadius: '50%', width: 22, height: 22, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.75rem', lineHeight: 1 }}
                                         >✕</button>
-                                        {i === 0 && <span style={{ position: 'absolute', bottom: 4, left: 4, background: '#C3002F', color: '#fff', fontSize: '0.55rem', fontWeight: 700, padding: '0.1rem 0.4rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Principal</span>}
+                                        {i === 0 && <span style={{ position: 'absolute', bottom: 4, left: 4, background: '#F5C518', color: '#fff', fontSize: '0.55rem', fontWeight: 700, padding: '0.1rem 0.4rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Principal</span>}
                                     </div>
                                 ))}
                             </div>

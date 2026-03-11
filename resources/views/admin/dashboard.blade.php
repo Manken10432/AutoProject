@@ -8,7 +8,7 @@
 {{-- Stats cards --}}
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
 
-    <div style="background:#fff;border:1px solid #e5e7eb;padding:1.25rem 1.5rem;border-left:4px solid #C3002F;">
+    <div style="background:#fff;border:1px solid #e5e7eb;padding:1.25rem 1.5rem;border-left:4px solid #F5C518;">
         <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6b7280;margin-bottom:0.5rem;">Total Vehículos</div>
         <div style="font-size:2rem;font-weight:900;color:#333;line-height:1;">{{ $stats['total'] }}</div>
     </div>
@@ -65,7 +65,7 @@
                     <td style="padding:0.875rem 1rem;color:#555;">{{ $contact->email }}</td>
                     <td style="padding:0.875rem 1rem;color:#555;">
                         @if($contact->vehicle)
-                        <a href="{{ route('vehicles.show', $contact->vehicle->id) }}" target="_blank" style="color:#C3002F;text-decoration:none;font-weight:600;">
+                        <a href="{{ route('vehicles.show', $contact->vehicle->id) }}" target="_blank" style="color:#F5C518;text-decoration:none;font-weight:600;">
                             {{ $contact->vehicle->year }} {{ $contact->vehicle->brand }} {{ $contact->vehicle->model }}
                         </a>
                         @else

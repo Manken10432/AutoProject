@@ -7,7 +7,7 @@
 
 <div style="max-width:800px;">
     <div style="margin-bottom:1.25rem;">
-        <a href="{{ route('admin.vehiculos.index') }}" style="color:#C3002F;font-size:0.875rem;font-weight:600;text-decoration:none;">&larr; Volver a Vehículos</a>
+        <a href="{{ route('admin.vehiculos.index') }}" style="color:#F5C518;font-size:0.875rem;font-weight:600;text-decoration:none;">&larr; Volver a Vehículos</a>
     </div>
 
     @if($errors->any())
@@ -89,7 +89,7 @@
 
                 <div style="display:flex;align-items:center;gap:0.75rem;padding-top:1.5rem;">
                     <input type="checkbox" name="featured" value="1" id="featured"
-                           style="width:1.125rem;height:1.125rem;accent-color:#C3002F;cursor:pointer;"
+                           style="width:1.125rem;height:1.125rem;accent-color:#F5C518;cursor:pointer;"
                            {{ old('featured', $vehiculo->featured) ? 'checked' : '' }}>
                     <label for="featured" style="font-weight:600;color:#333;font-size:0.875rem;cursor:pointer;text-transform:none;letter-spacing:0;">
                         Marcar como Destacado

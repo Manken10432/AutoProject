@@ -12,6 +12,8 @@ class Vehicle extends Model
         'model',
         'year',
         'price',
+        'down_payment',
+        'monthly_payment',
         'mileage',
         'fuel_type',
         'transmission',
@@ -28,6 +30,8 @@ class Vehicle extends Model
         'images' => 'array',
         'featured' => 'boolean',
         'price' => 'decimal:2',
+        'down_payment' => 'decimal:2',
+        'monthly_payment' => 'decimal:2',
     ];
 
     public function scopeFeatured(Builder $query): Builder

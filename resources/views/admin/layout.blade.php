@@ -16,7 +16,7 @@
         {{-- Logo --}}
         <div style="padding:1.5rem 1.25rem;border-bottom:1px solid #1f2937;">
             <a href="{{ route('admin.dashboard') }}" style="text-decoration:none;">
-                <span style="color:#C3002F;font-size:1.25rem;font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;">Auto<span style="color:#fff;">Galería</span></span>
+                <span style="color:#F5C518;font-size:1.25rem;font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;">Auto<span style="color:#fff;">Galería</span></span>
             </a>
             <p style="color:#6b7280;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.1em;margin-top:0.25rem;">Panel Admin</p>
         </div>

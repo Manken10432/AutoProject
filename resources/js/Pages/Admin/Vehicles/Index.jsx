@@ -54,7 +54,7 @@ export default function AdminVehiclesIndex({ vehicles }) {
                                             </div>
                                         </div>
                                     </td>
-                                    <td style={{ padding: '0.875rem 1rem', fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.04em', color: '#C3002F' }}>
+                                    <td style={{ padding: '0.875rem 1rem', fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.04em', color: '#F5C518' }}>
                                         ${Number(vehicle.price).toLocaleString('es-MX')}
                                     </td>
                                     <td style={{ padding: '0.875rem 1rem', color: '#555', fontSize: '0.75rem' }}>
@@ -92,7 +92,7 @@ export default function AdminVehiclesIndex({ vehicles }) {
                                             </a>
                                             <Link
                                                 href={route('admin.vehiculos.edit', vehicle.id)}
-                                                style={{ background: 'rgba(195,0,47,0.1)', border: '1px solid rgba(195,0,47,0.2)', color: '#C3002F', padding: '0.3rem 0.625rem', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', textDecoration: 'none', letterSpacing: '0.06em' }}
+                                                style={{ background: 'rgba(195,0,47,0.1)', border: '1px solid rgba(195,0,47,0.2)', color: '#F5C518', padding: '0.3rem 0.625rem', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', textDecoration: 'none', letterSpacing: '0.06em' }}
                                             >
                                                 Editar
                                             </Link>
@@ -109,7 +109,7 @@ export default function AdminVehiclesIndex({ vehicles }) {
                                 <tr>
                                     <td colSpan={7} style={{ padding: '4rem', textAlign: 'center' }}>
                                         <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.5rem', letterSpacing: '0.08em', color: '#222', marginBottom: '0.625rem' }}>SIN VEHÍCULOS</div>
-                                        <Link href={route('admin.vehiculos.create')} style={{ color: '#C3002F', fontWeight: 700, fontSize: '0.875rem' }}>
+                                        <Link href={route('admin.vehiculos.create')} style={{ color: '#F5C518', fontWeight: 700, fontSize: '0.875rem' }}>
                                             Agregar el primero
                                         </Link>
                                     </td>
@@ -130,9 +130,9 @@ export default function AdminVehiclesIndex({ vehicles }) {
                                     style={{
                                         display: 'inline-flex', alignItems: 'center', padding: '0.35rem 0.625rem',
                                         fontSize: '0.75rem', fontWeight: 600,
-                                        background: link.active ? '#C3002F' : '#1c1c1c',
+                                        background: link.active ? '#F5C518' : '#1c1c1c',
                                         color: link.active ? '#fff' : '#555',
-                                        border: `1px solid ${link.active ? '#C3002F' : '#2a2a2a'}`,
+                                        border: `1px solid ${link.active ? '#F5C518' : '#2a2a2a'}`,
                                         textDecoration: 'none',
                                     }}
                                 />

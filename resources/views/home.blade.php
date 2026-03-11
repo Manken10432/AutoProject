@@ -13,16 +13,16 @@
     <div class="hero-slide" style="position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.3) 100%), url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1600&q=80') center/cover no-repeat;"></div>
 
     {{-- Red accent stripe --}}
-    <div style="position:absolute;left:0;top:0;bottom:0;width:5px;background-color:#C3002F;"></div>
+    <div style="position:absolute;left:0;top:0;bottom:0;width:5px;background-color:#F5C518;"></div>
 
     <div class="max-w-7xl mx-auto px-4 py-20 md:py-28 relative z-10">
         <div class="max-w-2xl">
-            <div style="display:inline-block;background-color:#C3002F;color:#fff;font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.35rem 1rem;margin-bottom:1.25rem;">
+            <div style="display:inline-block;background-color:#F5C518;color:#fff;font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.35rem 1rem;margin-bottom:1.25rem;">
                 GÓMEZ PALACIO, DURANGO
             </div>
             <h1 style="color:#ffffff;font-size:clamp(2.5rem,6vw,3.5rem);font-weight:900;text-transform:uppercase;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1.25rem;">
                 ENCUENTRA<br>
-                <span style="color:#C3002F;">TU AUTO</span><br>
+                <span style="color:#F5C518;">TU AUTO</span><br>
                 IDEAL
             </h1>
             <p style="color:#cccccc;font-size:1.125rem;line-height:1.6;margin-bottom:2rem;max-width:480px;">
@@ -40,19 +40,19 @@
             {{-- Stats --}}
             <div class="flex flex-wrap gap-8 mt-10 pt-8" style="border-top:1px solid rgba(255,255,255,0.1);">
                 <div>
-                    <div style="color:#C3002F;font-size:1.75rem;font-weight:900;line-height:1;">+150</div>
+                    <div style="color:#F5C518;font-size:1.75rem;font-weight:900;line-height:1;">+150</div>
                     <div style="color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;margin-top:0.25rem;">Vehículos</div>
                 </div>
                 <div>
-                    <div style="color:#C3002F;font-size:1.75rem;font-weight:900;line-height:1;">10+</div>
+                    <div style="color:#F5C518;font-size:1.75rem;font-weight:900;line-height:1;">10+</div>
                     <div style="color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;margin-top:0.25rem;">Años de exp.</div>
                 </div>
                 <div>
-                    <div style="color:#C3002F;font-size:1.75rem;font-weight:900;line-height:1;">500+</div>
+                    <div style="color:#F5C518;font-size:1.75rem;font-weight:900;line-height:1;">500+</div>
                     <div style="color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;margin-top:0.25rem;">Clientes felices</div>
                 </div>
                 <div>
-                    <div style="color:#C3002F;font-size:1.75rem;font-weight:900;line-height:1;">100%</div>
+                    <div style="color:#F5C518;font-size:1.75rem;font-weight:900;line-height:1;">100%</div>
                     <div style="color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;margin-top:0.25rem;">Verificados</div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
 </section>
 
 {{-- QUICK SEARCH BAR --}}
-<section style="background-color:#C3002F;" class="py-6">
+<section style="background-color:#F5C518;" class="py-6">
     <div class="max-w-7xl mx-auto px-4">
         <form action="{{ route('vehicles.index') }}" method="GET">
             <div class="flex flex-col md:flex-row gap-3 items-end">
@@ -126,18 +126,18 @@
                          loading="lazy">
                     @if($vehicle->status === 'sold')
                     <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
-                        <span style="background:#C3002F;color:#fff;font-weight:700;text-transform:uppercase;padding:0.5rem 1.5rem;letter-spacing:0.1em;font-size:0.875rem;">VENDIDO</span>
+                        <span style="background:#F5C518;color:#fff;font-weight:700;text-transform:uppercase;padding:0.5rem 1.5rem;letter-spacing:0.1em;font-size:0.875rem;">VENDIDO</span>
                     </div>
                     @endif
                     <div style="position:absolute;top:0.75rem;left:0.75rem;">
-                        <span style="background:#C3002F;color:#fff;font-size:0.7rem;font-weight:700;text-transform:uppercase;padding:0.25rem 0.6rem;letter-spacing:0.05em;">DESTACADO</span>
+                        <span style="background:#F5C518;color:#fff;font-size:0.7rem;font-weight:700;text-transform:uppercase;padding:0.25rem 0.6rem;letter-spacing:0.05em;">DESTACADO</span>
                     </div>
                 </div>
                 <div style="padding:1.25rem;">
                     <h3 style="font-size:1rem;font-weight:700;text-transform:uppercase;color:#333;letter-spacing:0.02em;margin-bottom:0.5rem;">
                         {{ $vehicle->year }} {{ $vehicle->brand }} {{ $vehicle->model }}
                     </h3>
-                    <div style="font-size:1.375rem;font-weight:900;color:#C3002F;margin-bottom:0.75rem;">
+                    <div style="font-size:1.375rem;font-weight:900;color:#F5C518;margin-bottom:0.75rem;">
                         ${{ number_format($vehicle->price, 0, '.', ',') }}
                     </div>
                     <div style="display:flex;gap:1rem;color:#666;font-size:0.8125rem;margin-bottom:1rem;">
@@ -167,7 +167,7 @@
         </div>
         @else
         <div style="text-align:center;padding:3rem;color:#666;">
-            <p>Próximamente más vehículos disponibles. <a href="{{ route('contact.index') }}" style="color:#C3002F;font-weight:700;">Contáctanos</a> para más información.</p>
+            <p>Próximamente más vehículos disponibles. <a href="{{ route('contact.index') }}" style="color:#F5C518;font-weight:700;">Contáctanos</a> para más información.</p>
         </div>
         @endif
     </div>
@@ -180,7 +180,7 @@
 
             <a href="{{ route('contact.index') }}?tipo=prueba" style="text-decoration:none;" class="group flex flex-col items-center text-center px-6 py-8 hover:bg-red-50 transition-colors">
                 <div style="width:3rem;height:3rem;border-radius:50%;background:#fff3f5;display:flex;align-items:center;justify-content:center;margin-bottom:0.875rem;transition:background 0.2s;" class="group-hover:bg-red-100">
-                    <svg class="w-6 h-6" style="color:#C3002F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6" style="color:#F5C518;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
                     </svg>
                 </div>
@@ -189,7 +189,7 @@
 
             <a href="{{ route('contact.index') }}" style="text-decoration:none;" class="group flex flex-col items-center text-center px-6 py-8 hover:bg-red-50 transition-colors">
                 <div style="width:3rem;height:3rem;border-radius:50%;background:#fff3f5;display:flex;align-items:center;justify-content:center;margin-bottom:0.875rem;" class="group-hover:bg-red-100">
-                    <svg class="w-6 h-6" style="color:#C3002F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6" style="color:#F5C518;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 20h16a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                 </div>
@@ -198,7 +198,7 @@
 
             <a href="{{ route('vehicles.index') }}" style="text-decoration:none;" class="group flex flex-col items-center text-center px-6 py-8 hover:bg-red-50 transition-colors">
                 <div style="width:3rem;height:3rem;border-radius:50%;background:#fff3f5;display:flex;align-items:center;justify-content:center;margin-bottom:0.875rem;" class="group-hover:bg-red-100">
-                    <svg class="w-6 h-6" style="color:#C3002F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6" style="color:#F5C518;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/>
                     </svg>
                 </div>
@@ -230,7 +230,7 @@
 
             {{-- Benefit 1 --}}
             <div style="text-align:center;padding:2rem 1.5rem;">
-                <div style="width:4rem;height:4rem;background-color:#C3002F;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+                <div style="width:4rem;height:4rem;background-color:#F5C518;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                     </svg>
@@ -241,7 +241,7 @@
 
             {{-- Benefit 2 --}}
             <div style="text-align:center;padding:2rem 1.5rem;">
-                <div style="width:4rem;height:4rem;background-color:#C3002F;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+                <div style="width:4rem;height:4rem;background-color:#F5C518;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                     </svg>
@@ -252,7 +252,7 @@
 
             {{-- Benefit 3 --}}
             <div style="text-align:center;padding:2rem 1.5rem;">
-                <div style="width:4rem;height:4rem;background-color:#C3002F;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+                <div style="width:4rem;height:4rem;background-color:#F5C518;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
                     </svg>
@@ -263,7 +263,7 @@
 
             {{-- Benefit 4 --}}
             <div style="text-align:center;padding:2rem 1.5rem;">
-                <div style="width:4rem;height:4rem;background-color:#C3002F;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+                <div style="width:4rem;height:4rem;background-color:#F5C518;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
                     </svg>
@@ -284,10 +284,10 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-            <div style="background:#fff;padding:2rem;border-left:4px solid #C3002F;">
+            <div style="background:#fff;padding:2rem;border-left:4px solid #F5C518;">
                 <div style="display:flex;gap:2px;margin-bottom:1rem;">
                     @for($i=0;$i<5;$i++)
-                    <svg class="w-5 h-5" style="fill:#C3002F;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-5 h-5" style="fill:#F5C518;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     @endfor
                 </div>
                 <p style="color:#555;font-size:0.9375rem;line-height:1.7;font-style:italic;margin-bottom:1.25rem;">"Excelente atención desde el primer momento. Encontré mi Toyota Corolla en perfectas condiciones y con un precio justo. ¡100% recomendados!"</p>
@@ -297,10 +297,10 @@
                 </div>
             </div>
 
-            <div style="background:#fff;padding:2rem;border-left:4px solid #C3002F;">
+            <div style="background:#fff;padding:2rem;border-left:4px solid #F5C518;">
                 <div style="display:flex;gap:2px;margin-bottom:1rem;">
                     @for($i=0;$i<5;$i++)
-                    <svg class="w-5 h-5" style="fill:#C3002F;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-5 h-5" style="fill:#F5C518;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     @endfor
                 </div>
                 <p style="color:#555;font-size:0.9375rem;line-height:1.7;font-style:italic;margin-bottom:1.25rem;">"El proceso de financiamiento fue muy sencillo. Me asesoraron muy bien y salí manejando mi Honda CR-V el mismo día. Un servicio de primera."</p>
@@ -310,10 +310,10 @@
                 </div>
             </div>
 
-            <div style="background:#fff;padding:2rem;border-left:4px solid #C3002F;">
+            <div style="background:#fff;padding:2rem;border-left:4px solid #F5C518;">
                 <div style="display:flex;gap:2px;margin-bottom:1rem;">
                     @for($i=0;$i<5;$i++)
-                    <svg class="w-5 h-5" style="fill:#C3002F;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-5 h-5" style="fill:#F5C518;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     @endfor
                 </div>
                 <p style="color:#555;font-size:0.9375rem;line-height:1.7;font-style:italic;margin-bottom:1.25rem;">"Llevé mi familia a buscar una camioneta y quedamos muy satisfechos. Toda la documentación en orden, vehículo revisado. AutoGalería es de confianza."</p>
@@ -330,7 +330,7 @@
 <section class="py-0">
     <div style="height:380px;background:#e5e7eb;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,0.3),transparent);padding:1.25rem 2rem;">
-            <span style="background:#C3002F;color:#fff;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:0.3rem 0.8rem;">Nuestra Ubicación</span>
+            <span style="background:#F5C518;color:#fff;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:0.3rem 0.8rem;">Nuestra Ubicación</span>
         </div>
         <iframe
             src="https://maps.google.com/maps?q=25.5694,-103.4997&z=14&output=embed"
@@ -346,7 +346,7 @@
 </section>
 
 {{-- BOTTOM CTA BAR --}}
-<section style="background-color:#C3002F;" class="py-12">
+<section style="background-color:#F5C518;" class="py-12">
     <div class="max-w-7xl mx-auto px-4 text-center">
         <h2 style="color:#ffffff;font-size:clamp(1.5rem,3vw,2rem);font-weight:900;text-transform:uppercase;margin-bottom:1rem;letter-spacing:-0.01em;">
             ¿Listo Para Encontrar Tu Auto?

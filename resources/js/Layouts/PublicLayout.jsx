@@ -38,7 +38,7 @@ function BottomQuoteBar() {
         <div className="hidden md:block" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: '#0c0c0c', borderTop: '1px solid #2a2a2a', zIndex: 998, transform: visible ? 'translateY(0)' : 'translateY(100%)', transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)' }}>
             <form onSubmit={submit}>
                 <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0.875rem 1.5rem', display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-                    <span style={{ fontFamily: "'Bebas Neue', sans-serif", color: '#C3002F', fontSize: '1.125rem', letterSpacing: '0.12em', whiteSpace: 'nowrap', flexShrink: 0 }}>
+                    <span style={{ fontFamily: "'Bebas Neue', sans-serif", color: '#F5C518', fontSize: '1.125rem', letterSpacing: '0.12em', whiteSpace: 'nowrap', flexShrink: 0 }}>
                         COTIZA AHORA
                     </span>
                     <div style={{ flex: 1, display: 'flex', gap: '0.625rem', flexWrap: 'wrap' }}>
@@ -74,7 +74,7 @@ export default function PublicLayout({ children, title, description, ogType, ogI
     }, []);
 
     const navClass = transparentNav
-        ? `navbar ${scrolled ? 'scrolled' : ''}`
+        ? `navbar ${scrolled || menuOpen ? 'scrolled' : ''}`
         : 'navbar opaque';
 
     return (
@@ -108,9 +108,9 @@ export default function PublicLayout({ children, title, description, ogType, ogI
 
                             {/* Logo */}
                             <Link href={route('home')} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                <div style={{ width: '3px', height: '28px', background: '#C3002F' }} />
+                                <div style={{ width: '3px', height: '28px', background: '#F5C518' }} />
                                 <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.5rem', letterSpacing: '0.06em', color: '#ffffff', lineHeight: 1 }}>
-                                    AUTO<span style={{ color: '#C3002F' }}>GALERÍA</span>
+                                    AUTO<span style={{ color: '#F5C518' }}>GALERÍA</span>
                                 </span>
                             </Link>
 
@@ -145,25 +145,26 @@ export default function PublicLayout({ children, title, description, ogType, ogI
                             </button>
                         </div>
 
-                        {/* Mobile menu */}
-                        {menuOpen && (
-                            <div style={{ borderTop: '1px solid #2a2a2a', paddingBottom: '1.5rem', paddingTop: '1rem' }} className="md:hidden">
-                                {[
-                                    { href: route('home'), label: 'Inicio' },
-                                    { href: route('vehicles.index'), label: 'Inventario' },
-                                    { href: route('contact.index'), label: 'Cotización' },
-                                ].map(({ href, label }) => (
-                                    <Link key={label} href={href} onClick={() => setMenuOpen(false)} style={{ display: 'block', padding: '0.75rem 0', fontFamily: "'DM Sans'", fontWeight: 600, fontSize: '0.875rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#aaa', textDecoration: 'none', borderBottom: '1px solid #1a1a1a' }}>
-                                        {label}
-                                    </Link>
-                                ))}
-                                <a href={`${WA_BASE}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: '1rem', padding: '0.75rem' }}>
-                                    <WhatsAppIcon /> WhatsApp
-                                </a>
-                            </div>
-                        )}
                     </div>
                 </nav>
+
+                {/* Mobile menu panel — fixed, always above page content */}
+                {menuOpen && (
+                    <div className="md:hidden" style={{ position: 'fixed', top: '68px', left: 0, right: 0, zIndex: 200, background: '#0c0c0c', borderTop: '1px solid #2a2a2a', borderBottom: '1px solid #2a2a2a', padding: '0.75rem 2rem 1.5rem' }}>
+                        {[
+                            { href: route('home'), label: 'Inicio' },
+                            { href: route('vehicles.index'), label: 'Inventario' },
+                            { href: route('contact.index'), label: 'Cotización' },
+                        ].map(({ href, label }) => (
+                            <Link key={label} href={href} onClick={() => setMenuOpen(false)} style={{ display: 'block', padding: '0.75rem 0', fontFamily: "'DM Sans'", fontWeight: 600, fontSize: '0.875rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#aaa', textDecoration: 'none', borderBottom: '1px solid #1a1a1a' }}>
+                                {label}
+                            </Link>
+                        ))}
+                        <a href={`${WA_BASE}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: '1rem', padding: '0.75rem' }}>
+                            <WhatsAppIcon /> WhatsApp
+                        </a>
+                    </div>
+                )}
 
                 {/* MAIN */}
                 <main>{children}</main>
@@ -176,9 +177,9 @@ export default function PublicLayout({ children, title, description, ogType, ogI
                             {/* Brand */}
                             <div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-                                    <div style={{ width: '3px', height: '28px', background: '#C3002F' }} />
+                                    <div style={{ width: '3px', height: '28px', background: '#F5C518' }} />
                                     <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.4rem', letterSpacing: '0.06em', color: '#fff', lineHeight: 1 }}>
-                                        AUTO<span style={{ color: '#C3002F' }}>GALERÍA</span>
+                                        AUTO<span style={{ color: '#F5C518' }}>GALERÍA</span>
                                     </span>
                                 </div>
                                 <p style={{ color: '#555', fontSize: '0.875rem', lineHeight: 1.7, marginBottom: '1.5rem', maxWidth: '280px' }}>
@@ -212,7 +213,7 @@ export default function PublicLayout({ children, title, description, ogType, ogI
                                     ].map(({ label, href }) => (
                                         <li key={label}>
                                             <Link href={href} style={{ color: '#555', fontSize: '0.875rem', textDecoration: 'none', fontFamily: "'DM Sans'", transition: 'color 0.2s ease' }}
-                                                onMouseEnter={e => e.currentTarget.style.color = '#C3002F'}
+                                                onMouseEnter={e => e.currentTarget.style.color = '#F5C518'}
                                                 onMouseLeave={e => e.currentTarget.style.color = '#555'}>
                                                 {label}
                                             </Link>
@@ -231,7 +232,7 @@ export default function PublicLayout({ children, title, description, ogType, ogI
                                         { icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', text: 'Lun–Sáb 9am–7pm · Dom 10am–3pm' },
                                     ].map(({ icon, text, href }, i) => (
                                         <li key={i} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                                            <svg style={{ width: '1rem', height: '1rem', color: '#C3002F', flexShrink: 0, marginTop: '0.125rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <svg style={{ width: '1rem', height: '1rem', color: '#F5C518', flexShrink: 0, marginTop: '0.125rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={icon} />
                                             </svg>
                                             {href ? (

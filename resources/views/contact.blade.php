@@ -6,7 +6,7 @@
 @section('content')
 
 {{-- PAGE HERO --}}
-<div style="background-color:#1a1a1a;padding:3rem 0;border-bottom:4px solid #C3002F;">
+<div style="background-color:#1a1a1a;padding:3rem 0;border-bottom:4px solid #F5C518;">
     <div class="max-w-7xl mx-auto px-4 text-center">
         <h1 style="color:#ffffff;font-size:clamp(1.75rem,5vw,2.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:0.75rem;">
             Contáctanos
@@ -27,7 +27,7 @@
             <div style="display:flex;flex-direction:column;gap:1.25rem;margin-bottom:2.5rem;">
 
                 <div style="display:flex;gap:1rem;align-items:flex-start;">
-                    <div style="width:2.5rem;height:2.5rem;background:#C3002F;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <div style="width:2.5rem;height:2.5rem;background:#F5C518;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                     </div>
                     <div>
@@ -37,12 +37,12 @@
                 </div>
 
                 <div style="display:flex;gap:1rem;align-items:flex-start;">
-                    <div style="width:2.5rem;height:2.5rem;background:#C3002F;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <div style="width:2.5rem;height:2.5rem;background:#F5C518;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                     </div>
                     <div>
                         <div style="font-weight:700;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.05em;color:#333;margin-bottom:0.25rem;">Teléfono</div>
-                        <a href="tel:6141234567" style="color:#C3002F;font-size:0.9rem;text-decoration:none;font-weight:600;">(614) 123-4567</a>
+                        <a href="tel:6141234567" style="color:#F5C518;font-size:0.9rem;text-decoration:none;font-weight:600;">(614) 123-4567</a>
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@
                 </div>
 
                 <div style="display:flex;gap:1rem;align-items:flex-start;">
-                    <div style="width:2.5rem;height:2.5rem;background:#C3002F;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <div style="width:2.5rem;height:2.5rem;background:#F5C518;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                     <div>

@@ -53,7 +53,7 @@
 
                 {{-- Logo --}}
                 <a href="{{ route('home') }}" class="flex items-center gap-2 no-underline">
-                    <span style="color:#C3002F; font-size:1.6rem; font-weight:900; letter-spacing:-0.02em; text-transform:uppercase;">Auto<span style="color:#333333;">Galería</span></span>
+                    <span style="color:#F5C518; font-size:1.6rem; font-weight:900; letter-spacing:-0.02em; text-transform:uppercase;">Auto<span style="color:#333333;">Galería</span></span>
                 </a>
 
                 {{-- Desktop Menu --}}
@@ -103,7 +103,7 @@
                 {{-- Column 1: Info + Socials --}}
                 <div>
                     <div class="mb-4">
-                        <span style="color:#C3002F; font-size:1.4rem; font-weight:900; text-transform:uppercase; letter-spacing:-0.02em;">Auto<span style="color:#ffffff;">Galería</span></span>
+                        <span style="color:#F5C518; font-size:1.4rem; font-weight:900; text-transform:uppercase; letter-spacing:-0.02em;">Auto<span style="color:#ffffff;">Galería</span></span>
                     </div>
                     <p class="text-gray-400 text-sm leading-relaxed mb-5">
                         Tu concesionaria de confianza en Gómez Palacio, Durango. Más de 10 años ofreciendo los mejores seminuevos con garantía y financiamiento accesible.
@@ -178,15 +178,15 @@
                 <div style="flex:1;display:flex;gap:0.625rem;flex-wrap:wrap;">
                     <input type="text" name="name" placeholder="Nombre"
                         style="flex:1;min-width:120px;background:#2a2a2a;border:1px solid #444;color:#fff;padding:0.5rem 0.75rem;font-size:0.8125rem;outline:none;"
-                        onfocus="this.style.borderColor='#C3002F'" onblur="this.style.borderColor='#444'" required>
+                        onfocus="this.style.borderColor='#F5C518'" onblur="this.style.borderColor='#444'" required>
                     <input type="email" name="email" placeholder="Correo"
                         style="flex:1;min-width:140px;background:#2a2a2a;border:1px solid #444;color:#fff;padding:0.5rem 0.75rem;font-size:0.8125rem;outline:none;"
-                        onfocus="this.style.borderColor='#C3002F'" onblur="this.style.borderColor='#444'" required>
+                        onfocus="this.style.borderColor='#F5C518'" onblur="this.style.borderColor='#444'" required>
                     <input type="tel" name="phone" placeholder="Teléfono"
                         style="flex:1;min-width:120px;background:#2a2a2a;border:1px solid #444;color:#fff;padding:0.5rem 0.75rem;font-size:0.8125rem;outline:none;"
-                        onfocus="this.style.borderColor='#C3002F'" onblur="this.style.borderColor='#444'" required>
+                        onfocus="this.style.borderColor='#F5C518'" onblur="this.style.borderColor='#444'" required>
                 </div>
-                <button type="submit" style="background:#C3002F;color:#fff;font-weight:700;text-transform:uppercase;padding:0.5rem 1.5rem;border:none;cursor:pointer;font-size:0.8125rem;letter-spacing:0.05em;white-space:nowrap;flex-shrink:0;transition:background 0.2s;" onmouseover="this.style.background='#9e0026'" onmouseout="this.style.background='#C3002F'">
+                <button type="submit" style="background:#F5C518;color:#fff;font-weight:700;text-transform:uppercase;padding:0.5rem 1.5rem;border:none;cursor:pointer;font-size:0.8125rem;letter-spacing:0.05em;white-space:nowrap;flex-shrink:0;transition:background 0.2s;" onmouseover="this.style.background='#9e0026'" onmouseout="this.style.background='#F5C518'">
                     Enviar &rsaquo;
                 </button>
                 <button type="button" id="close-quote-bar" style="background:transparent;border:none;color:#666;cursor:pointer;padding:0.25rem;flex-shrink:0;" aria-label="Cerrar">

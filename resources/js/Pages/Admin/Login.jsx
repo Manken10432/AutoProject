@@ -15,16 +15,16 @@ export default function AdminLogin() {
             <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0a', fontFamily: "'DM Sans', sans-serif" }}>
 
                 {/* Decorative left bar */}
-                <div style={{ position: 'fixed', left: 0, top: 0, bottom: 0, width: 3, background: '#C3002F' }} />
+                <div style={{ position: 'fixed', left: 0, top: 0, bottom: 0, width: 3, background: '#F5C518' }} />
 
                 <div style={{ width: '100%', maxWidth: 380, padding: '0 1.5rem' }}>
 
                     {/* Logo */}
                     <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
                         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
-                            <div style={{ width: 3, height: 28, background: '#C3002F' }} />
+                            <div style={{ width: 3, height: 28, background: '#F5C518' }} />
                             <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.75rem', letterSpacing: '0.06em', color: '#fff', lineHeight: 1 }}>
-                                AUTO<span style={{ color: '#C3002F' }}>GALERÍA</span>
+                                AUTO<span style={{ color: '#F5C518' }}>GALERÍA</span>
                             </span>
                         </div>
                         <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#333' }}>
@@ -51,7 +51,7 @@ export default function AdminLogin() {
                                     value={data.password}
                                     onChange={e => setData('password', e.target.value)}
                                     className="form-input"
-                                    style={{ borderColor: errors.password ? '#C3002F' : undefined }}
+                                    style={{ borderColor: errors.password ? '#F5C518' : undefined }}
                                     placeholder="••••••••"
                                     required
                                     autoFocus

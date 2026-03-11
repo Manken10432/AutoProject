@@ -24,9 +24,9 @@
 @php
     $waMessage = urlencode('Hola, estoy interesado en el ' . $vehicle->year . ' ' . $vehicle->brand . ' ' . $vehicle->model . ' - $' . number_format($vehicle->price, 0, '.', ',') . ' MXN. ¿Está disponible?');
 @endphp
-<div class="lg:hidden" style="background:#fff;border-bottom:3px solid #C3002F;padding:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;top:64px;z-index:40;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+<div class="lg:hidden" style="background:#fff;border-bottom:3px solid #F5C518;padding:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;top:64px;z-index:40;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
     <div>
-        <div style="font-size:1.375rem;font-weight:900;color:#C3002F;line-height:1;">${{ number_format($vehicle->price, 0, '.', ',') }}</div>
+        <div style="font-size:1.375rem;font-weight:900;color:#F5C518;line-height:1;">${{ number_format($vehicle->price, 0, '.', ',') }}</div>
         <div style="font-size:0.75rem;color:#666;text-transform:uppercase;letter-spacing:0.05em;">{{ $vehicle->year }} {{ $vehicle->brand }} {{ $vehicle->model }}</div>
     </div>
     <a href="https://wa.me/526141234567?text={{ $waMessage }}" target="_blank"
@@ -97,7 +97,7 @@
             {{-- DESCRIPTION --}}
             @if($vehicle->description)
             <div style="background:#fff;border:1px solid #e5e7eb;padding:1.5rem;margin-bottom:1.5rem;">
-                <h2 style="font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#333;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid #C3002F;">
+                <h2 style="font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#333;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid #F5C518;">
                     Descripción
                 </h2>
                 <p style="color:#555;font-size:0.9375rem;line-height:1.8;">{{ $vehicle->description }}</p>
@@ -106,7 +106,7 @@
 
             {{-- CONTACT FORM --}}
             <div style="background:#F8F8F8;border:1px solid #e5e7eb;padding:1.75rem;">
-                <h2 style="font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#333;margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:2px solid #C3002F;">
+                <h2 style="font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#333;margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:2px solid #F5C518;">
                     Solicitar Información
                 </h2>
 
@@ -153,7 +153,7 @@
 
                 {{-- Price Card --}}
                 <div style="background:#fff;border:1px solid #e5e7eb;padding:1.75rem;margin-bottom:1.25rem;">
-                    <div style="font-size:2rem;font-weight:900;color:#C3002F;margin-bottom:0.25rem;">
+                    <div style="font-size:2rem;font-weight:900;color:#F5C518;margin-bottom:0.25rem;">
                         ${{ number_format($vehicle->price, 0, '.', ',') }}
                     </div>
                     <div style="color:#666;font-size:0.8125rem;margin-bottom:1.5rem;">Precio de lista en MXN</div>
@@ -175,7 +175,7 @@
 
                 {{-- Specs --}}
                 <div style="background:#fff;border:1px solid #e5e7eb;padding:1.5rem;margin-bottom:1.25rem;">
-                    <h3 style="font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#333;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid #C3002F;">
+                    <h3 style="font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#333;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid #F5C518;">
                         Especificaciones
                     </h3>
                     <div style="display:flex;flex-direction:column;gap:0;">
@@ -217,7 +217,7 @@
                 {{-- Info box --}}
                 <div style="background:#F8F8F8;border:1px solid #e5e7eb;padding:1.25rem;">
                     <div style="display:flex;gap:0.5rem;align-items:flex-start;">
-                        <svg class="w-5 h-5 shrink-0 mt-0.5" style="color:#C3002F;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <svg class="w-5 h-5 shrink-0 mt-0.5" style="color:#F5C518;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                         <p style="font-size:0.8125rem;color:#555;line-height:1.6;">Todos nuestros vehículos pasan por una revisión mecánica completa y contamos con financiamiento disponible.</p>
                     </div>
                 </div>
@@ -244,7 +244,7 @@
                     <h3 style="font-size:0.875rem;font-weight:700;text-transform:uppercase;color:#333;margin-bottom:0.375rem;">
                         {{ $related->year }} {{ $related->brand }} {{ $related->model }}
                     </h3>
-                    <div style="font-size:1.1rem;font-weight:900;color:#C3002F;margin-bottom:0.75rem;">
+                    <div style="font-size:1.1rem;font-weight:900;color:#F5C518;margin-bottom:0.75rem;">
                         ${{ number_format($related->price, 0, '.', ',') }}
                     </div>
                     <a href="{{ route('vehicles.show', $related->id) }}" class="link-arrow text-xs">Ver Detalles &rsaquo;</a>

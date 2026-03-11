@@ -26,7 +26,7 @@ export default function Contact({ flash }) {
             title: 'Dirección',
             content: 'Blvd. Domingo Arrieta #1234\nGómez Palacio, Durango, México',
             icon: (
-                <svg width="18" height="18" fill="none" stroke="#C3002F" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                <svg width="18" height="18" fill="none" stroke="#F5C518" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                     <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
@@ -37,7 +37,7 @@ export default function Contact({ flash }) {
             content: null,
             link: { href: 'tel:6141234567', label: '(614) 123-4567' },
             icon: (
-                <svg width="18" height="18" fill="none" stroke="#C3002F" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                <svg width="18" height="18" fill="none" stroke="#F5C518" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                     <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
             ),
@@ -53,7 +53,7 @@ export default function Contact({ flash }) {
             title: 'Horarios',
             content: 'Lun – Sáb: 9:00am – 7:00pm\nDomingo: 10:00am – 3:00pm',
             icon: (
-                <svg width="18" height="18" fill="none" stroke="#C3002F" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                <svg width="18" height="18" fill="none" stroke="#F5C518" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                     <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             ),
@@ -72,14 +72,14 @@ export default function Contact({ flash }) {
                 borderBottom: '1px solid #1c1c1c',
                 background: `linear-gradient(105deg, rgba(0,0,0,0.97) 50%, rgba(0,0,0,0.6) 100%), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=80') center/cover no-repeat`,
             }}>
-                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 3, background: '#C3002F' }} />
+                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 3, background: '#F5C518' }} />
                 <div className="max-w-7xl mx-auto px-8" style={{ position: 'relative', zIndex: 1 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
                         <Link href={route('home')} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#555', textDecoration: 'none' }}>Inicio</Link>
                         <span style={{ color: '#333' }}>/</span>
-                        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#C3002F' }}>Contacto</span>
+                        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#F5C518' }}>Contacto</span>
                     </div>
-                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C3002F', marginBottom: '0.625rem' }}>
+                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#F5C518', marginBottom: '0.625rem' }}>
                         Estamos para ayudarte
                     </div>
                     <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(2.5rem,6vw,4rem)', letterSpacing: '0.02em', color: '#f0f0f0', lineHeight: 0.9 }}>
@@ -98,7 +98,7 @@ export default function Contact({ flash }) {
                             <ScrollReveal>
                                 <div style={{ marginBottom: '2.5rem' }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.75rem' }}>
-                                        <div style={{ width: 3, height: 20, background: '#C3002F' }} />
+                                        <div style={{ width: 3, height: 20, background: '#F5C518' }} />
                                         <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.125rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>
                                             INFORMACIÓN
                                         </h2>
@@ -126,7 +126,7 @@ export default function Contact({ flash }) {
                                                             href={link.href}
                                                             target={link.external ? '_blank' : undefined}
                                                             rel={link.external ? 'noreferrer' : undefined}
-                                                            style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.9rem', fontWeight: 600, color: link.green ? '#25D366' : '#C3002F', textDecoration: 'none' }}
+                                                            style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.9rem', fontWeight: 600, color: link.green ? '#25D366' : '#F5C518', textDecoration: 'none' }}
                                                         >
                                                             {link.label}
                                                         </a>
@@ -155,7 +155,7 @@ export default function Contact({ flash }) {
                             <ScrollReveal delay={1}>
                                 <div style={{ background: '#141414', border: '1px solid #1c1c1c', padding: '2.25rem' }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
-                                        <div style={{ width: 3, height: 20, background: '#C3002F' }} />
+                                        <div style={{ width: 3, height: 20, background: '#F5C518' }} />
                                         <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.125rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>
                                             SOLICITAR COTIZACIÓN
                                         </h2>
@@ -180,17 +180,17 @@ export default function Contact({ flash }) {
                                             <div>
                                                 <label className="form-label">Nombre completo *</label>
                                                 <input type="text" className="form-input" placeholder="Juan García" value={data.name} onChange={e => setData('name', e.target.value)} required />
-                                                {errors.name && <p style={{ color: '#C3002F', fontSize: '0.75rem', marginTop: '0.3rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.name}</p>}
+                                                {errors.name && <p style={{ color: '#ff4d6a', fontSize: '0.75rem', marginTop: '0.3rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.name}</p>}
                                             </div>
                                             <div>
                                                 <label className="form-label">Correo electrónico *</label>
                                                 <input type="email" className="form-input" placeholder="correo@ejemplo.com" value={data.email} onChange={e => setData('email', e.target.value)} required />
-                                                {errors.email && <p style={{ color: '#C3002F', fontSize: '0.75rem', marginTop: '0.3rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.email}</p>}
+                                                {errors.email && <p style={{ color: '#ff4d6a', fontSize: '0.75rem', marginTop: '0.3rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.email}</p>}
                                             </div>
                                             <div>
                                                 <label className="form-label">Teléfono *</label>
                                                 <input type="tel" className="form-input" placeholder="(614) 000-0000" value={data.phone} onChange={e => setData('phone', e.target.value)} required />
-                                                {errors.phone && <p style={{ color: '#C3002F', fontSize: '0.75rem', marginTop: '0.3rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.phone}</p>}
+                                                {errors.phone && <p style={{ color: '#ff4d6a', fontSize: '0.75rem', marginTop: '0.3rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.phone}</p>}
                                             </div>
                                             <div className="sm:col-span-2">
                                                 <label className="form-label">Mensaje</label>
@@ -210,7 +210,7 @@ export default function Contact({ flash }) {
                     <ScrollReveal>
                         <div style={{ marginTop: '4rem' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-                                <div style={{ width: 3, height: 20, background: '#C3002F' }} />
+                                <div style={{ width: 3, height: 20, background: '#F5C518' }} />
                                 <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.125rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>
                                     CÓMO LLEGAR
                                 </h2>

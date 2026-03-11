@@ -9,9 +9,9 @@
 @theme {
     --font-display: 'Bebas Neue', sans-serif;
     --font-sans: 'DM Sans', sans-serif;
-    --color-brand: #C3002F;
-    --color-brand-dark: #9e0026;
-    --color-brand-bright: #e8003a;
+    --color-brand: #F5C518;
+    --color-brand-dark: #d4a800;
+    --color-brand-bright: #e8c800;
     --color-bg: #0c0c0c;
     --color-surface: #141414;
     --color-surface-2: #1c1c1c;
@@ -161,7 +161,7 @@ body {
     font-family: 'Bebas Neue', sans-serif;
     line-height: 1;
     letter-spacing: 0.02em;
-    color: #C3002F;
+    color: #F5C518;
 }
 
 /* ─── Red line underline animate ─── */
@@ -187,7 +187,7 @@ h1, h2, h3, h4 {
 .navbar {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 300;
     transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
     border-bottom: 1px solid transparent;
 }
@@ -219,7 +219,7 @@ h1, h2, h3, h4 {
     position: absolute;
     bottom: -2px; left: 0;
     width: 0; height: 2px;
-    background: #C3002F;
+    background: #F5C518;
     transition: width 0.25s ease;
 }
 .nav-link:hover { color: #ffffff; }
@@ -230,8 +230,8 @@ h1, h2, h3, h4 {
 /* ─── Buttons ─── */
 .btn-primary {
     display: inline-block;
-    background: #C3002F;
-    color: #ffffff;
+    background: #F5C518;
+    color: #0c0c0c;
     font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     font-size: 0.8125rem;
@@ -246,8 +246,8 @@ h1, h2, h3, h4 {
     overflow: hidden;
 }
 .btn-primary:hover {
-    background: #e8003a;
-    color: #ffffff;
+    background: #d4a800;
+    color: #0c0c0c;
     transform: translateY(-1px);
 }
 .btn-primary:active { transform: translateY(0); }
@@ -276,21 +276,21 @@ h1, h2, h3, h4 {
 .btn-outline {
     display: inline-block;
     background: transparent;
-    color: #C3002F;
+    color: #F5C518;
     font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     font-size: 0.8125rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     padding: 0.875rem 2rem;
-    border: 1px solid #C3002F;
+    border: 1px solid #F5C518;
     cursor: pointer;
     text-decoration: none;
     transition: background 0.2s ease, color 0.2s ease;
 }
 .btn-outline:hover {
-    background: #C3002F;
-    color: #ffffff;
+    background: #F5C518;
+    color: #0c0c0c;
 }
 
 .btn-wa {
@@ -337,8 +337,8 @@ h1, h2, h3, h4 {
 }
 
 .btn-search {
-    background: #C3002F;
-    color: #ffffff;
+    background: #F5C518;
+    color: #0c0c0c;
     font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     font-size: 0.8125rem;
@@ -350,7 +350,7 @@ h1, h2, h3, h4 {
     white-space: nowrap;
     transition: background 0.2s ease;
 }
-.btn-search:hover { background: #e8003a; }
+.btn-search:hover { background: #d4a800; }
 
 /* ─── Vehicle Card ─── */
 .vehicle-card {
@@ -361,9 +361,9 @@ h1, h2, h3, h4 {
     cursor: pointer;
 }
 .vehicle-card:hover {
-    border-color: #C3002F;
+    border-color: #F5C518;
     transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(195, 0, 47, 0.15);
+    box-shadow: 0 16px 40px rgba(245,197,24,0.15);
 }
 
 /* ─── Form inputs ─── */
@@ -381,8 +381,8 @@ h1, h2, h3, h4 {
     -webkit-appearance: none;
 }
 .form-input:focus {
-    border-color: #C3002F;
-    box-shadow: 0 0 0 3px rgba(195, 0, 47, 0.12);
+    border-color: #F5C518;
+    box-shadow: 0 0 0 3px rgba(245,197,24,0.12);
 }
 .form-input::placeholder { color: #555; }
 
@@ -404,7 +404,7 @@ h1, h2, h3, h4 {
 
 /* ─── Filter checkbox ─── */
 .filter-checkbox {
-    accent-color: #C3002F;
+    accent-color: #F5C518;
     width: 1rem;
     height: 1rem;
     cursor: pointer;
@@ -426,9 +426,9 @@ h1, h2, h3, h4 {
 }
 .badge-sold {
     display: inline-block;
-    background: rgba(195, 0, 47, 0.12);
+    background: rgba(245,197,24,0.12);
     color: #ff4d6a;
-    border: 1px solid rgba(195, 0, 47, 0.3);
+    border: 1px solid rgba(245,197,24,0.3);
     font-size: 0.7rem;
     font-weight: 700;
     font-family: 'DM Sans', sans-serif;
@@ -445,7 +445,7 @@ h1, h2, h3, h4 {
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #C3002F;
+    color: #F5C518;
     margin-bottom: 1rem;
 }
 
@@ -469,7 +469,7 @@ h1, h2, h3, h4 {
 }
 .thumb-item:hover { opacity: 0.8; }
 .thumb-item.active {
-    border-color: #C3002F;
+    border-color: #F5C518;
     opacity: 1;
 }
 
@@ -515,13 +515,13 @@ h1, h2, h3, h4 {
     color: #f0f0f0;
 }
 .admin-sidebar-link.active {
-    background: #C3002F;
-    color: #ffffff;
+    background: #F5C518;
+    color: #0c0c0c;
 }
 
 /* ─── Link arrow ─── */
 .link-arrow {
-    color: #C3002F;
+    color: #F5C518;
     font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     font-size: 0.8125rem;
@@ -530,7 +530,7 @@ h1, h2, h3, h4 {
     letter-spacing: 0.08em;
     transition: color 0.2s ease;
 }
-.link-arrow:hover { color: #e8003a; }
+.link-arrow:hover { color: #d4a800; }
 
 /* ─── Breadcrumb ─── */
 .breadcrumb-link {
@@ -539,7 +539,7 @@ h1, h2, h3, h4 {
     font-family: 'DM Sans', sans-serif;
     transition: color 0.2s ease;
 }
-.breadcrumb-link:hover { color: #C3002F; }
+.breadcrumb-link:hover { color: #F5C518; }
 
 /* ─── Pagination ─── */
 .pagination-container nav {
@@ -551,7 +551,7 @@ h1, h2, h3, h4 {
 .accent-line {
     width: 48px;
     height: 3px;
-    background: #C3002F;
+    background: #F5C518;
     margin-bottom: 1.5rem;
 }
 .accent-line.center { margin-left: auto; margin-right: auto; }

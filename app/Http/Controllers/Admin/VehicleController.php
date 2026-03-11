@@ -24,18 +24,20 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'brand'        => 'required|string|max:100',
-            'model'        => 'required|string|max:100',
-            'year'         => 'required|integer|min:1990|max:2030',
-            'price'        => 'required|numeric|min:0',
-            'mileage'      => 'required|integer|min:0',
-            'fuel_type'    => 'required|string',
-            'transmission' => 'required|string',
-            'color'        => 'nullable|string|max:50',
-            'description'  => 'nullable|string',
-            'featured'     => 'nullable|boolean',
-            'status'       => 'required|string|in:available,sold',
-            'images.*'     => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+            'brand'           => 'required|string|max:100',
+            'model'           => 'required|string|max:100',
+            'year'            => 'required|integer|min:1990|max:2030',
+            'price'           => 'nullable|numeric|min:0',
+            'down_payment'    => 'nullable|numeric|min:0',
+            'monthly_payment' => 'nullable|numeric|min:0',
+            'mileage'         => 'required|integer|min:0',
+            'fuel_type'       => 'required|string',
+            'transmission'    => 'required|string',
+            'color'           => 'nullable|string|max:50',
+            'description'     => 'nullable|string',
+            'featured'        => 'nullable|boolean',
+            'status'          => 'required|string|in:available,sold',
+            'images.*'        => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
         ]);
 
         $validated['featured'] = $request->boolean('featured');
@@ -63,18 +65,20 @@ class VehicleController extends Controller
     public function update(Request $request, Vehicle $vehiculo)
     {
         $validated = $request->validate([
-            'brand'        => 'required|string|max:100',
-            'model'        => 'required|string|max:100',
-            'year'         => 'required|integer|min:1990|max:2030',
-            'price'        => 'required|numeric|min:0',
-            'mileage'      => 'required|integer|min:0',
-            'fuel_type'    => 'required|string',
-            'transmission' => 'required|string',
-            'color'        => 'nullable|string|max:50',
-            'description'  => 'nullable|string',
-            'featured'     => 'nullable|boolean',
-            'status'       => 'required|string|in:available,sold',
-            'images.*'     => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+            'brand'           => 'required|string|max:100',
+            'model'           => 'required|string|max:100',
+            'year'            => 'required|integer|min:1990|max:2030',
+            'price'           => 'nullable|numeric|min:0',
+            'down_payment'    => 'nullable|numeric|min:0',
+            'monthly_payment' => 'nullable|numeric|min:0',
+            'mileage'         => 'required|integer|min:0',
+            'fuel_type'       => 'required|string',
+            'transmission'    => 'required|string',
+            'color'           => 'nullable|string|max:50',
+            'description'     => 'nullable|string',
+            'featured'        => 'nullable|boolean',
+            'status'          => 'required|string|in:available,sold',
+            'images.*'        => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
         ]);
 
         $validated['featured'] = $request->boolean('featured');

@@ -32,8 +32,14 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
         return () => window.removeEventListener('keydown', handleKey);
     }, [images.length]);
 
+    const priceLabel = vehicle.monthly_payment
+        ? `$${Number(vehicle.monthly_payment).toLocaleString('es-MX')}/mes`
+        : vehicle.price
+            ? `$${Number(vehicle.price).toLocaleString('es-MX')} MXN`
+            : 'precio a consultar';
+
     const waMessage = encodeURIComponent(
-        `Hola, estoy interesado en el ${vehicle.year} ${vehicle.brand} ${vehicle.model} - $${Number(vehicle.price).toLocaleString('es-MX')} MXN. ¿Está disponible?`
+        `Hola, estoy interesado en el ${vehicle.year} ${vehicle.brand} ${vehicle.model} (${priceLabel}). ¿Está disponible?`
     );
 
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -51,13 +57,13 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
         { label: 'Combustible', value: vehicle.fuel_type },
         { label: 'Transmisión', value: vehicle.transmission },
         ...(vehicle.color ? [{ label: 'Color', value: vehicle.color }] : []),
-        { label: 'Estado', value: vehicle.status === 'available' ? 'Disponible' : 'Vendido', accent: vehicle.status === 'available' ? '#25D366' : '#C3002F' },
+        { label: 'Estado', value: vehicle.status === 'available' ? 'Disponible' : 'Vendido', accent: vehicle.status === 'available' ? '#25D366' : '#F5C518' },
     ];
 
     return (
         <PublicLayout
             title={`${vehicle.year} ${vehicle.brand} ${vehicle.model} — AutoGalería`}
-            description={`${vehicle.year} ${vehicle.brand} ${vehicle.model} en $${Number(vehicle.price).toLocaleString('es-MX')} MXN. ${Number(vehicle.mileage).toLocaleString('es-MX')} km, ${vehicle.fuel_type}, ${vehicle.transmission}.`}
+            description={`${vehicle.year} ${vehicle.brand} ${vehicle.model}. ${Number(vehicle.mileage).toLocaleString('es-MX')} km, ${vehicle.fuel_type}, ${vehicle.transmission}. ${vehicle.monthly_payment ? `Desde $${Number(vehicle.monthly_payment).toLocaleString('es-MX')}/mes` : vehicle.price ? `$${Number(vehicle.price).toLocaleString('es-MX')} MXN` : ''}`}
             ogType="product"
             ogImage={vehicle.first_image}
         >
@@ -75,10 +81,15 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
             </div>
 
             {/* ─── MOBILE STICKY CTA ─── */}
-            <div className="lg:hidden" style={{ background: '#141414', borderBottom: '2px solid #C3002F', padding: '0.875rem 1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', position: 'sticky', top: 64, zIndex: 40 }}>
+            <div className="lg:hidden" style={{ background: '#141414', borderBottom: '2px solid #F5C518', padding: '0.875rem 1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', position: 'sticky', top: 64, zIndex: 40 }}>
                 <div>
-                    <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.5rem', color: '#C3002F', letterSpacing: '0.02em', lineHeight: 1 }}>
-                        ${Number(vehicle.price).toLocaleString('es-MX')}
+                    <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.5rem', color: '#F5C518', letterSpacing: '0.02em', lineHeight: 1 }}>
+                        {vehicle.monthly_payment
+                            ? <>${Number(vehicle.monthly_payment).toLocaleString('es-MX')}<span style={{ fontSize: '0.85rem', color: '#888' }}>/mes</span></>
+                            : vehicle.price
+                                ? <>${Number(vehicle.price).toLocaleString('es-MX')}</>
+                                : <span style={{ fontSize: '1rem' }}>Consultar</span>
+                        }
                     </div>
                     <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.7rem', color: '#555', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                         {vehicle.year} {vehicle.brand} {vehicle.model}
@@ -109,7 +120,7 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
                             </div>
 
                             <div style={{ marginBottom: '0.375rem' }}>
-                                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.18em', color: '#C3002F' }}>
+                                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.18em', color: '#F5C518' }}>
                                     {vehicle.brand}
                                 </span>
                             </div>
@@ -137,7 +148,7 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
                                             </button>
                                             <div style={{ position: 'absolute', bottom: '0.75rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '0.375rem' }}>
                                                 {images.map((_, i) => (
-                                                    <div key={i} onClick={() => switchToIdx(i)} style={{ width: i === mainIdx ? 20 : 6, height: 6, background: i === mainIdx ? '#C3002F' : 'rgba(255,255,255,0.3)', borderRadius: 3, cursor: 'pointer', transition: 'width 0.3s ease, background 0.2s ease' }} />
+                                                    <div key={i} onClick={() => switchToIdx(i)} style={{ width: i === mainIdx ? 20 : 6, height: 6, background: i === mainIdx ? '#F5C518' : 'rgba(255,255,255,0.3)', borderRadius: 3, cursor: 'pointer', transition: 'width 0.3s ease, background 0.2s ease' }} />
                                                 ))}
                                             </div>
                                         </>
@@ -163,7 +174,7 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
                             {vehicle.description && (
                                 <div style={{ background: '#141414', border: '1px solid #1c1c1c', padding: '1.75rem', marginBottom: '1.5rem' }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-                                        <div style={{ width: 3, height: 20, background: '#C3002F' }} />
+                                        <div style={{ width: 3, height: 20, background: '#F5C518' }} />
                                         <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>
                                             DESCRIPCIÓN
                                         </h2>
@@ -175,7 +186,7 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
                             {/* CONTACT FORM */}
                             <div style={{ background: '#141414', border: '1px solid #1c1c1c', padding: '1.75rem' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-                                    <div style={{ width: 3, height: 20, background: '#C3002F' }} />
+                                    <div style={{ width: 3, height: 20, background: '#F5C518' }} />
                                     <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>
                                         SOLICITAR INFORMACIÓN
                                     </h2>
@@ -193,17 +204,17 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
                                         <div>
                                             <label className="form-label">Nombre *</label>
                                             <input type="text" className="form-input" placeholder="Tu nombre completo" value={data.name} onChange={e => setData('name', e.target.value)} required />
-                                            {errors.name && <p style={{ color: '#C3002F', fontSize: '0.75rem', marginTop: '0.25rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.name}</p>}
+                                            {errors.name && <p style={{ color: '#ff4d6a', fontSize: '0.75rem', marginTop: '0.25rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.name}</p>}
                                         </div>
                                         <div>
                                             <label className="form-label">Email *</label>
                                             <input type="email" className="form-input" placeholder="correo@ejemplo.com" value={data.email} onChange={e => setData('email', e.target.value)} required />
-                                            {errors.email && <p style={{ color: '#C3002F', fontSize: '0.75rem', marginTop: '0.25rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.email}</p>}
+                                            {errors.email && <p style={{ color: '#ff4d6a', fontSize: '0.75rem', marginTop: '0.25rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.email}</p>}
                                         </div>
                                         <div className="sm:col-span-2">
                                             <label className="form-label">Teléfono *</label>
                                             <input type="tel" className="form-input" placeholder="(614) 000-0000" value={data.phone} onChange={e => setData('phone', e.target.value)} required />
-                                            {errors.phone && <p style={{ color: '#C3002F', fontSize: '0.75rem', marginTop: '0.25rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.phone}</p>}
+                                            {errors.phone && <p style={{ color: '#ff4d6a', fontSize: '0.75rem', marginTop: '0.25rem', fontFamily: "'DM Sans', sans-serif" }}>{errors.phone}</p>}
                                         </div>
                                         <div className="sm:col-span-2">
                                             <label className="form-label">Mensaje</label>
@@ -222,11 +233,36 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
                             <div style={{ position: 'sticky', top: 80 }}>
                                 {/* Price card */}
                                 <div style={{ background: '#141414', border: '1px solid #1c1c1c', padding: '1.75rem', marginBottom: '1rem' }}>
-                                    <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '2.5rem', color: '#C3002F', letterSpacing: '0.02em', lineHeight: 1, marginBottom: '0.25rem' }}>
-                                        ${Number(vehicle.price).toLocaleString('es-MX')}
-                                    </div>
-                                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#555', marginBottom: '1.5rem' }}>
-                                        Precio de lista en MXN
+                                    {vehicle.monthly_payment ? (
+                                        <>
+                                            <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '2.5rem', color: '#F5C518', letterSpacing: '0.02em', lineHeight: 1 }}>
+                                                ${Number(vehicle.monthly_payment).toLocaleString('es-MX')}
+                                                <span style={{ fontSize: '1.1rem', color: '#888', marginLeft: '0.25rem' }}>/mes</span>
+                                            </div>
+                                            {vehicle.down_payment && (
+                                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.85rem', color: '#888', marginTop: '0.25rem' }}>
+                                                    Enganche desde ${Number(vehicle.down_payment).toLocaleString('es-MX')}
+                                                </div>
+                                            )}
+                                            {vehicle.price && (
+                                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.75rem', color: '#555', marginTop: '0.2rem' }}>
+                                                    Contado ${Number(vehicle.price).toLocaleString('es-MX')}
+                                                </div>
+                                            )}
+                                        </>
+                                    ) : vehicle.price ? (
+                                        <>
+                                            <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '2.5rem', color: '#F5C518', letterSpacing: '0.02em', lineHeight: 1, marginBottom: '0.25rem' }}>
+                                                ${Number(vehicle.price).toLocaleString('es-MX')}
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '1rem', color: '#888', marginBottom: '0.25rem' }}>
+                                            Consultar precio
+                                        </div>
+                                    )}
+                                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#555', marginTop: '0.5rem', marginBottom: '1.5rem' }}>
+                                        {vehicle.monthly_payment ? 'Financiamiento disponible' : vehicle.price ? 'Precio de lista en MXN' : 'Contactar para precio'}
                                     </div>
 
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
@@ -246,7 +282,7 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
                                 {/* Specs */}
                                 <div style={{ background: '#141414', border: '1px solid #1c1c1c', padding: '1.5rem', marginBottom: '1rem' }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '1.25rem' }}>
-                                        <div style={{ width: 3, height: 16, background: '#C3002F' }} />
+                                        <div style={{ width: 3, height: 16, background: '#F5C518' }} />
                                         <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '0.9375rem', letterSpacing: '0.12em', color: '#f0f0f0' }}>
                                             ESPECIFICACIONES
                                         </h3>
@@ -263,7 +299,7 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
 
                                 {/* Trust badge */}
                                 <div style={{ background: '#111', border: '1px solid #1c1c1c', padding: '1.125rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                                    <svg width="18" height="18" fill="none" stroke="#C3002F" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: 2 }}>
+                                    <svg width="18" height="18" fill="none" stroke="#F5C518" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: 2 }}>
                                         <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                     </svg>
                                     <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.8125rem', color: '#555', lineHeight: 1.65 }}>
@@ -292,12 +328,17 @@ export default function VehicleShow({ vehicle, relatedVehicles, flash }) {
                                                     <img src={related.first_image} alt={`${related.year} ${related.brand} ${related.model}`} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} loading="lazy" className="group-hover:scale-105" />
                                                 </div>
                                                 <div style={{ padding: '1rem 1.125rem 1.25rem' }}>
-                                                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', color: '#C3002F', marginBottom: '0.25rem' }}>{related.brand}</div>
+                                                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', color: '#F5C518', marginBottom: '0.25rem' }}>{related.brand}</div>
                                                     <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.04em', color: '#f0f0f0', marginBottom: '0.375rem', lineHeight: 1.1 }}>
                                                         {related.year} {related.model}
                                                     </h3>
-                                                    <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.125rem', color: '#C3002F', letterSpacing: '0.03em' }}>
-                                                        ${Number(related.price).toLocaleString('es-MX')}
+                                                    <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.125rem', color: '#F5C518', letterSpacing: '0.03em' }}>
+                                                        {related.monthly_payment
+                                                            ? <>${Number(related.monthly_payment).toLocaleString('es-MX')}<span style={{ fontSize: '0.75rem', color: '#888' }}>/mes</span></>
+                                                            : related.price
+                                                                ? <>${Number(related.price).toLocaleString('es-MX')}</>
+                                                                : <span style={{ fontSize: '0.8rem', color: '#888' }}>Consultar</span>
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>

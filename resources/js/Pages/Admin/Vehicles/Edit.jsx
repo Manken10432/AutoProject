@@ -18,7 +18,7 @@ const Field = ({ label, error, span2 = false, children }) => (
 
 const SectionHeader = ({ title }) => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '1.25rem' }}>
-        <div style={{ width: 3, height: 18, background: '#C3002F' }} />
+        <div style={{ width: 3, height: 18, background: '#F5C518' }} />
         <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>{title}</h2>
     </div>
 );
@@ -30,6 +30,8 @@ export default function AdminVehiclesEdit({ vehiculo }) {
         model: vehiculo.model || '',
         year: vehiculo.year || CURRENT_YEAR,
         price: vehiculo.price || '',
+        down_payment: vehiculo.down_payment || '',
+        monthly_payment: vehiculo.monthly_payment || '',
         mileage: vehiculo.mileage || '',
         fuel_type: vehiculo.fuel_type || '',
         transmission: vehiculo.transmission || '',
@@ -82,13 +84,13 @@ export default function AdminVehiclesEdit({ vehiculo }) {
         >
             <div style={{ maxWidth: 820 }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
-                    <Link href={route('admin.vehiculos.index')} style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#C3002F', textDecoration: 'none' }}>
+                    <Link href={route('admin.vehiculos.index')} style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#F5C518', textDecoration: 'none' }}>
                         &larr; Volver a Vehículos
                     </Link>
                     <button
                         type="button"
                         onClick={destroy}
-                        style={{ background: 'transparent', border: '1px solid rgba(195,0,47,0.3)', color: '#C3002F', padding: '0.4rem 0.875rem', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', cursor: 'pointer' }}
+                        style={{ background: 'transparent', border: '1px solid rgba(195,0,47,0.3)', color: '#F5C518', padding: '0.4rem 0.875rem', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', cursor: 'pointer' }}
                     >
                         Eliminar Vehículo
                     </button>
@@ -112,7 +114,9 @@ export default function AdminVehiclesEdit({ vehiculo }) {
                                 { label: 'Marca *', key: 'brand', type: 'text', placeholder: 'Nissan, Toyota...', required: true },
                                 { label: 'Modelo *', key: 'model', type: 'text', placeholder: 'Frontier, Corolla...', required: true },
                                 { label: 'Año *', key: 'year', type: 'number', min: 1990, max: CURRENT_YEAR + 1, required: true },
-                                { label: 'Precio MXN *', key: 'price', type: 'number', min: 0, step: 1000, required: true },
+                                { label: 'Enganche MXN', key: 'down_payment', type: 'number', min: 0, step: 500, placeholder: '15000' },
+                                { label: 'Mensualidad MXN', key: 'monthly_payment', type: 'number', min: 0, step: 100, placeholder: '4000' },
+                                { label: 'Precio contado MXN', key: 'price', type: 'number', min: 0, step: 1000, placeholder: '350000' },
                                 { label: 'Kilometraje *', key: 'mileage', type: 'number', min: 0, required: true },
                                 { label: 'Color', key: 'color', type: 'text', placeholder: 'Blanco, Negro...' },
                             ].map(({ label, key, type, ...rest }) => (
@@ -140,7 +144,7 @@ export default function AdminVehiclesEdit({ vehiculo }) {
                                 </select>
                             </Field>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', paddingTop: '1.5rem' }}>
-                                <input type="checkbox" id="featured" checked={data.featured} onChange={e => setData('featured', e.target.checked)} style={{ width: '1.125rem', height: '1.125rem', accentColor: '#C3002F', cursor: 'pointer' }} />
+                                <input type="checkbox" id="featured" checked={data.featured} onChange={e => setData('featured', e.target.checked)} style={{ width: '1.125rem', height: '1.125rem', accentColor: '#F5C518', cursor: 'pointer' }} />
                                 <label htmlFor="featured" style={{ fontWeight: 600, color: '#888', fontSize: '0.875rem', cursor: 'pointer' }}>Marcar como Destacado</label>
                             </div>
                         </div>
@@ -165,7 +169,7 @@ export default function AdminVehiclesEdit({ vehiculo }) {
                                             onClick={() => removeExisting(i)}
                                             style={{ position: 'absolute', top: 4, right: 4, background: 'rgba(0,0,0,0.75)', border: 'none', borderRadius: '50%', width: 22, height: 22, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.75rem', lineHeight: 1 }}
                                         >✕</button>
-                                        {i === 0 && <span style={{ position: 'absolute', bottom: 4, left: 4, background: '#C3002F', color: '#fff', fontSize: '0.55rem', fontWeight: 700, padding: '0.1rem 0.4rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Principal</span>}
+                                        {i === 0 && <span style={{ position: 'absolute', bottom: 4, left: 4, background: '#F5C518', color: '#fff', fontSize: '0.55rem', fontWeight: 700, padding: '0.1rem 0.4rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Principal</span>}
                                     </div>
                                 ))}
                             </div>

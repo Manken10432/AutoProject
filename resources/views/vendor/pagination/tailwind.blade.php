@@ -65,7 +65,7 @@
                                 @if ($page == $paginator->currentPage())
                                     <span aria-current="page"
                                           class="inline-flex items-center px-4 py-2 -ml-px text-sm font-bold text-white border border-red-700 cursor-default"
-                                          style="background-color:#C3002F;">
+                                          style="background-color:#F5C518;">
                                         {{ $page }}
                                     </span>
                                 @else

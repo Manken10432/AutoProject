@@ -83,26 +83,45 @@ function VehicleCard({ vehicle, index }) {
                         />
                         {vehicle.status === 'sold' && (
                             <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.65)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <span style={{ background: '#C3002F', color: '#fff', fontFamily: "'DM Sans', sans-serif", fontWeight: 700, textTransform: 'uppercase', padding: '0.4rem 1.25rem', letterSpacing: '0.12em', fontSize: '0.75rem' }}>VENDIDO</span>
+                                <span style={{ background: '#F5C518', color: '#fff', fontFamily: "'DM Sans', sans-serif", fontWeight: 700, textTransform: 'uppercase', padding: '0.4rem 1.25rem', letterSpacing: '0.12em', fontSize: '0.75rem' }}>VENDIDO</span>
                             </div>
                         )}
                         {vehicle.featured && (
                             <div style={{ position: 'absolute', top: '0.75rem', left: '0.75rem', display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
-                                <span style={{ background: '#C3002F', color: '#fff', fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', padding: '0.2rem 0.6rem', letterSpacing: '0.08em', fontFamily: "'DM Sans', sans-serif" }}>DESTACADO</span>
+                                <span style={{ background: '#F5C518', color: '#fff', fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', padding: '0.2rem 0.6rem', letterSpacing: '0.08em', fontFamily: "'DM Sans', sans-serif" }}>DESTACADO</span>
                             </div>
                         )}
                         {/* Gradient overlay on hover */}
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)', opacity: 0, transition: 'opacity 0.3s ease' }} className="group-hover:opacity-100" />
                     </div>
                     <div style={{ padding: '1.25rem 1.375rem 1.5rem' }}>
-                        <div style={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.18em', color: '#C3002F', marginBottom: '0.3rem', fontFamily: "'DM Sans', sans-serif" }}>
+                        <div style={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.18em', color: '#F5C518', marginBottom: '0.3rem', fontFamily: "'DM Sans', sans-serif" }}>
                             {vehicle.brand}
                         </div>
                         <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.25rem', letterSpacing: '0.04em', color: '#f0f0f0', marginBottom: '0.5rem', lineHeight: 1.05 }}>
                             {vehicle.year} {vehicle.model}
                         </h3>
-                        <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.5rem', color: '#C3002F', letterSpacing: '0.03em', marginBottom: '0.875rem' }}>
-                            ${Number(vehicle.price).toLocaleString('es-MX')}
+                        <div style={{ marginBottom: '0.875rem' }}>
+                            {vehicle.monthly_payment ? (
+                                <div>
+                                    <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.5rem', color: '#F5C518', letterSpacing: '0.03em', lineHeight: 1 }}>
+                                        ${Number(vehicle.monthly_payment).toLocaleString('es-MX')}<span style={{ fontSize: '0.85rem', color: '#888' }}>/mes</span>
+                                    </div>
+                                    {vehicle.down_payment && (
+                                        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', color: '#666', marginTop: '0.2rem' }}>
+                                            Enganche desde ${Number(vehicle.down_payment).toLocaleString('es-MX')}
+                                        </div>
+                                    )}
+                                </div>
+                            ) : vehicle.price ? (
+                                <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.5rem', color: '#F5C518', letterSpacing: '0.03em' }}>
+                                    ${Number(vehicle.price).toLocaleString('es-MX')}
+                                </div>
+                            ) : (
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.8rem', color: '#888' }}>
+                                    Consultar precio
+                                </div>
+                            )}
                         </div>
                         <div style={{ display: 'flex', gap: '0.75rem', fontFamily: "'DM Sans', sans-serif", fontSize: '0.7rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#555', borderTop: '1px solid #1c1c1c', paddingTop: '0.75rem', flexWrap: 'wrap' }}>
                             <span>{Number(vehicle.mileage).toLocaleString('es-MX')} km</span>
@@ -129,7 +148,7 @@ function BrandTicker() {
                         <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.125rem', letterSpacing: '0.18em', color: '#2a2a2a', whiteSpace: 'nowrap' }}>
                             {brand}
                         </span>
-                        <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#C3002F', flexShrink: 0 }} />
+                        <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#F5C518', flexShrink: 0 }} />
                     </div>
                 ))}
             </div>
@@ -157,15 +176,15 @@ export default function Home({ featuredVehicles }) {
                 <HeroSlider current={heroSlide} />
 
                 {/* Left accent bar */}
-                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, background: '#C3002F', zIndex: 10 }} />
+                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, background: '#F5C518', zIndex: 10 }} />
 
                 <div className="max-w-7xl mx-auto px-6 md:px-8 relative pt-24 pb-12 md:pt-36 md:pb-24" style={{ zIndex: 10, width: '100%' }}>
                     <div style={{ maxWidth: 700 }}>
 
                         {/* Overline */}
                         <div className="hero-a1" style={{ display: 'flex', alignItems: 'center', gap: '0.875rem', marginBottom: '1.75rem' }}>
-                            <div className="line-grow" style={{ width: 36, height: 2, background: '#C3002F' }} />
-                            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C3002F' }}>
+                            <div className="line-grow" style={{ width: 36, height: 2, background: '#F5C518' }} />
+                            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#F5C518' }}>
                                 Gómez Palacio, Durango — Est. 2014
                             </span>
                         </div>
@@ -173,7 +192,7 @@ export default function Home({ featuredVehicles }) {
                         {/* Main headline */}
                         <h1 className="hero-a3" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(4.5rem,10vw,8rem)', lineHeight: 0.88, letterSpacing: '0.02em', color: '#ffffff', marginBottom: '1.75rem' }}>
                             EL AUTO<br />
-                            <span style={{ color: '#C3002F', WebkitTextStroke: '0', textShadow: '0 0 60px rgba(195,0,47,0.4)' }}>QUE BUSCAS</span><br />
+                            <span style={{ color: '#F5C518', WebkitTextStroke: '0', textShadow: '0 0 60px rgba(245,197,24,0.4)' }}>QUE BUSCAS</span><br />
                             TE ESPERA
                         </h1>
 
@@ -273,7 +292,7 @@ export default function Home({ featuredVehicles }) {
                                 <span className="section-label">Selección especial</span>
                                 <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(2.5rem,5.5vw,3.75rem)', color: '#f0f0f0', lineHeight: 0.9, letterSpacing: '0.02em' }}>
                                     VEHÍCULOS<br />
-                                    <span style={{ color: '#C3002F' }}>DESTACADOS</span>
+                                    <span style={{ color: '#F5C518' }}>DESTACADOS</span>
                                 </h2>
                             </div>
                             <Link href={route('vehicles.index')} className="link-arrow" style={{ marginBottom: '0.5rem' }}>
@@ -294,7 +313,7 @@ export default function Home({ featuredVehicles }) {
                         <div style={{ textAlign: 'center', padding: '4rem', color: '#333', border: '1px solid #1c1c1c' }}>
                             <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.5rem', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>PRÓXIMAMENTE</div>
                             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.875rem' }}>
-                                <Link href={route('contact.index')} style={{ color: '#C3002F', fontWeight: 700 }}>Contáctanos</Link> para más información.
+                                <Link href={route('contact.index')} style={{ color: '#F5C518', fontWeight: 700 }}>Contáctanos</Link> para más información.
                             </p>
                         </div>
                     )}
@@ -330,8 +349,8 @@ export default function Home({ featuredVehicles }) {
                             ].map(({ title, desc, path }, i) => (
                                 <ScrollReveal key={title} delay={i} direction="scale">
                                     <div style={{ background: '#141414', padding: '2rem 1.75rem', height: '100%' }}>
-                                        <div style={{ width: 40, height: 40, border: '1px solid rgba(195,0,47,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
-                                            <svg width="18" height="18" fill="none" stroke="#C3002F" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                                        <div style={{ width: 40, height: 40, border: '1px solid rgba(245,197,24,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
+                                            <svg width="18" height="18" fill="none" stroke="#F5C518" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                                                 <path d={path} />
                                             </svg>
                                         </div>
@@ -353,7 +372,7 @@ export default function Home({ featuredVehicles }) {
                             <span className="section-label">Testimonios</span>
                             <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(2.25rem,4.5vw,3.25rem)', color: '#f0f0f0', lineHeight: 0.9, letterSpacing: '0.02em' }}>
                                 LO QUE DICEN<br />
-                                <span style={{ color: '#C3002F' }}>NUESTROS CLIENTES</span>
+                                <span style={{ color: '#F5C518' }}>NUESTROS CLIENTES</span>
                             </h2>
                         </div>
                     </ScrollReveal>
@@ -371,7 +390,7 @@ export default function Home({ featuredVehicles }) {
                                     {/* Stars */}
                                     <div style={{ display: 'flex', gap: 3, marginBottom: '1.25rem' }}>
                                         {Array.from({ length: 5 }).map((_, j) => (
-                                            <svg key={j} width="13" height="13" viewBox="0 0 20 20" fill="#C3002F">
+                                            <svg key={j} width="13" height="13" viewBox="0 0 20 20" fill="#F5C518">
                                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                             </svg>
                                         ))}
@@ -380,7 +399,7 @@ export default function Home({ featuredVehicles }) {
                                         "{quote}"
                                     </p>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                        <div style={{ width: 2, height: 36, background: '#C3002F' }} />
+                                        <div style={{ width: 2, height: 36, background: '#F5C518' }} />
                                         <div>
                                             <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, color: '#e0e0e0', fontSize: '0.875rem' }}>{name}</div>
                                             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', color: '#444', letterSpacing: '0.05em' }}>{city}</div>
@@ -419,7 +438,7 @@ export default function Home({ featuredVehicles }) {
                                 <span className="section-label">¿Listo para comprar?</span>
                                 <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(2.5rem,5.5vw,4rem)', color: '#f0f0f0', lineHeight: 0.88, letterSpacing: '0.02em', marginBottom: '1.25rem' }}>
                                     TU PRÓXIMO AUTO<br />
-                                    <span style={{ color: '#C3002F' }}>TE ESPERA AQUÍ</span>
+                                    <span style={{ color: '#F5C518' }}>TE ESPERA AQUÍ</span>
                                 </h2>
                                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.9375rem', color: '#555', lineHeight: 1.7, maxWidth: 380 }}>
                                     Visítanos en Gómez Palacio o escríbenos ahora. Atendemos sin compromiso y sin presión.
@@ -461,7 +480,7 @@ function HeroSliderDots({ total, current }) {
                     style={{
                         width: i === current ? 24 : 6,
                         height: 6,
-                        background: i === current ? '#C3002F' : 'rgba(255,255,255,0.25)',
+                        background: i === current ? '#F5C518' : 'rgba(255,255,255,0.25)',
                         transition: 'width 0.4s cubic-bezier(0.16,1,0.3,1), background 0.3s',
                         borderRadius: 3,
                     }}

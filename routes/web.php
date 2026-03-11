@@ -14,6 +14,7 @@ Route::get('/seminuevos/{id}', [VehicleController::class, 'show'])->name('vehicl
 Route::get('/cotizacion', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/cotizacion', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('/robots.txt', [SitemapController::class, 'robots'])->name('robots');
 
 // Admin auth
 Route::get('/admin/login', [Admin\AuthController::class, 'showLogin'])->name('admin.login');

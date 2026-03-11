@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, router } from '@inertiajs/react';
 import PublicLayout from '@/Layouts/PublicLayout';
-import { ScrollReveal } from '@/hooks/useScrollReveal.jsx';
 
 function CatalogCard({ vehicle, index }) {
     const [imgLoaded, setImgLoaded] = useState(false);
@@ -9,7 +8,7 @@ function CatalogCard({ vehicle, index }) {
     useEffect(() => { if (imgRef.current?.complete) setImgLoaded(true); }, []);
 
     return (
-        <ScrollReveal delay={index % 3} direction="up">
+        <div style={{ animationName: 'heroFadeUp', animationDuration: '0.4s', animationTimingFunction: 'cubic-bezier(0.16,1,0.3,1)', animationFillMode: 'both', animationDelay: `${(index % 6) * 0.05}s` }}>
             <Link href={route('vehicles.show', vehicle.id)} style={{ textDecoration: 'none', display: 'block', background: '#0c0c0c', height: '100%' }}>
                 <div className="vehicle-card card-shine group" style={{ height: '100%' }}>
                     <div style={{ position: 'relative', overflow: 'hidden', height: 195 }}>
@@ -20,8 +19,8 @@ function CatalogCard({ vehicle, index }) {
                             alt={`${vehicle.year} ${vehicle.brand} ${vehicle.model}`}
                             style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease', opacity: imgLoaded ? 1 : 0 }}
                             className="group-hover:scale-105"
-                            loading="lazy"
                             onLoad={() => setImgLoaded(true)}
+                            onError={() => setImgLoaded(true)}
                         />
                         {vehicle.status === 'sold' && (
                             <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -55,7 +54,18 @@ function CatalogCard({ vehicle, index }) {
                     </div>
                 </div>
             </Link>
-        </ScrollReveal>
+        </div>
+    );
+}
+
+function SidebarSection({ title, children }) {
+    return (
+        <div style={{ marginBottom: '1.75rem', paddingBottom: '1.75rem', borderBottom: '1px solid #1c1c1c' }}>
+            <h4 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#f0f0f0', marginBottom: '1rem' }}>
+                {title}
+            </h4>
+            {children}
+        </div>
     );
 }
 
@@ -106,15 +116,6 @@ export default function VehiclesIndex({ vehicles, brands, years, filters = {} })
     };
 
     const hasFilters = form.brand.length || form.year_min || form.year_max || form.price_min || form.price_max || form.fuel_type.length || form.transmission.length;
-
-    const SidebarSection = ({ title, children }) => (
-        <div style={{ marginBottom: '1.75rem', paddingBottom: '1.75rem', borderBottom: '1px solid #1c1c1c' }}>
-            <h4 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#f0f0f0', marginBottom: '1rem' }}>
-                {title}
-            </h4>
-            {children}
-        </div>
-    );
 
     return (
         <PublicLayout title="Inventario de Seminuevos — AutoGalería" description="Explora nuestro inventario completo de seminuevos. Filtra por marca, año, precio y más.">
@@ -209,9 +210,9 @@ export default function VehiclesIndex({ vehicles, brands, years, filters = {} })
                                         {/* Year */}
                                         <SidebarSection title="Año">
                                             <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                                                <input type="number" placeholder="Desde" value={form.year_min} onChange={e => setForm(f => ({ ...f, year_min: e.target.value }))} min="2000" max={new Date().getFullYear()} className="form-input" style={{ fontSize: '0.8125rem', padding: '0.5rem 0.625rem' }} />
+                                                <input type="number" placeholder="Desde" value={form.year_min} onChange={e => { if (e.target.value.length <= 4) setForm(f => ({ ...f, year_min: e.target.value })); }} min="2000" max={new Date().getFullYear()} className="form-input" style={{ fontSize: '0.8125rem', padding: '0.5rem 0.625rem' }} />
                                                 <span style={{ color: '#333', flexShrink: 0 }}>—</span>
-                                                <input type="number" placeholder="Hasta" value={form.year_max} onChange={e => setForm(f => ({ ...f, year_max: e.target.value }))} min="2000" max={new Date().getFullYear()} className="form-input" style={{ fontSize: '0.8125rem', padding: '0.5rem 0.625rem' }} />
+                                                <input type="number" placeholder="Hasta" value={form.year_max} onChange={e => { if (e.target.value.length <= 4) setForm(f => ({ ...f, year_max: e.target.value })); }} min="2000" max={new Date().getFullYear()} className="form-input" style={{ fontSize: '0.8125rem', padding: '0.5rem 0.625rem' }} />
                                             </div>
                                         </SidebarSection>
 

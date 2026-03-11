@@ -14,4 +14,11 @@ class SitemapController extends Controller
             ->view('sitemap', compact('vehicles'))
             ->header('Content-Type', 'application/xml');
     }
+
+    public function robots()
+    {
+        $content = "User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /admin/\n\nSitemap: " . url('/sitemap.xml') . "\n";
+
+        return response($content, 200)->header('Content-Type', 'text/plain');
+    }
 }

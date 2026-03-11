@@ -249,6 +249,42 @@ El flujo ideal del usuario es:
 
 #### Pendiente / Próxima sesión
 - Subir imágenes reales desde el panel admin
-- SEO: meta tags dinámicos por vehículo, sitemap.xml
+- ~~SEO: meta tags dinámicos por vehículo, sitemap.xml~~ ✅
+- Cambiar contraseña admin a variable de entorno (`.env`)
+- Considerar migración a PostgreSQL para producción
+
+---
+
+### Sesión 3 — 2026-03-11
+
+**Estado: SEO completado ✅**
+
+#### SEO implementado
+
+**`PublicLayout.jsx`** — Head mejorado con:
+- `<link rel="canonical">` — URL canónica tomada de `props.ziggy.location` (full URL con dominio)
+- `og:url` — mismo valor que canonical
+- `og:site_name` — "AutoGalería"
+- `og:locale` — "es_MX"
+- `twitter:card` — `summary_large_image` si hay imagen, `summary` si no
+- `twitter:title`, `twitter:description`, `twitter:image`
+
+**Páginas y sus meta tags** (ya existían, confirmados correctos):
+- `Home.jsx` — título y descripción específicos ✅
+- `Vehicles/Index.jsx` — título y descripción del inventario ✅
+- `Vehicles/Show.jsx` — título/descripción/ogImage dinámicos por vehículo ✅
+- `Contact.jsx` — título y descripción de contacto ✅
+
+**`robots.txt`** — ahora dinámico:
+- Eliminado `public/robots.txt` estático
+- Nuevo método `SitemapController::robots()` — genera robots.txt con `url('/sitemap.xml')` para que el dominio se tome del `APP_URL` en `.env`
+- Ruta: `GET /robots.txt`
+
+**`sitemap.blade.php`** — mejorado:
+- Añadido `<lastmod>` a páginas estáticas (home, inventario, contacto) usando `now()->toAtomString()`
+- Las páginas de vehículos ya tenían `<lastmod>` con `updated_at`
+
+#### Pendiente
+- Subir imágenes reales desde el panel admin
 - Cambiar contraseña admin a variable de entorno (`.env`)
 - Considerar migración a PostgreSQL para producción

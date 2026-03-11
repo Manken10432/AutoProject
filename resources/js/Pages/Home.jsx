@@ -78,8 +78,8 @@ function VehicleCard({ vehicle, index }) {
                             alt={`${vehicle.year} ${vehicle.brand} ${vehicle.model}`}
                             style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease', opacity: imgLoaded ? 1 : 0 }}
                             className="group-hover:scale-105"
-                            loading="lazy"
                             onLoad={() => setImgLoaded(true)}
+                            onError={() => setImgLoaded(true)}
                         />
                         {vehicle.status === 'sold' && (
                             <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.65)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -153,13 +153,13 @@ export default function Home({ featuredVehicles }) {
             transparentNav
         >
             {/* ─── HERO ─── */}
-            <section style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', backgroundColor: '#0c0c0c' }}>
+            <section style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'flex-start', backgroundColor: '#0c0c0c' }}>
                 <HeroSlider current={heroSlide} />
 
                 {/* Left accent bar */}
                 <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, background: '#C3002F', zIndex: 10 }} />
 
-                <div className="max-w-7xl mx-auto px-8 relative" style={{ zIndex: 10, width: '100%', paddingTop: '8rem', paddingBottom: '6rem' }}>
+                <div className="max-w-7xl mx-auto px-6 md:px-8 relative pt-24 pb-12 md:pt-36 md:pb-24" style={{ zIndex: 10, width: '100%' }}>
                     <div style={{ maxWidth: 700 }}>
 
                         {/* Overline */}
@@ -198,7 +198,7 @@ export default function Home({ featuredVehicles }) {
                         </div>
 
                         {/* Stats */}
-                        <div className="hero-a6" style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap', marginTop: '3.5rem', paddingTop: '2.5rem', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+                        <div className="hero-a6" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
                             <StatCounter value="+150" label="Vehículos" />
                             <StatCounter value="10" suffix="+" label="Años de experiencia" />
                             <StatCounter value="500" suffix="+" label="Clientes satisfechos" />
@@ -218,7 +218,7 @@ export default function Home({ featuredVehicles }) {
             <section style={{ backgroundColor: '#141414', borderBottom: '1px solid #1c1c1c' }} className="py-8">
                 <div className="max-w-7xl mx-auto px-8">
                     <form action={route('vehicles.index')} method="GET">
-                        <div className="flex flex-col md:flex-row gap-3 items-end">
+                        <div className="flex flex-col md:flex-row gap-3 md:items-end">
                             <div style={{ flex: '0 0 auto' }}>
                                 <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.375rem', letterSpacing: '0.06em', color: '#f0f0f0' }}>
                                     BUSCA TU AUTO
@@ -256,7 +256,7 @@ export default function Home({ featuredVehicles }) {
                                     </select>
                                 </div>
                             ))}
-                            <button type="submit" className="btn-search" style={{ height: '2.8125rem', flexShrink: 0 }}>
+                            <button type="submit" className="btn-search w-full md:w-auto" style={{ height: '2.8125rem', flexShrink: 0 }}>
                                 Buscar &rsaquo;
                             </button>
                         </div>

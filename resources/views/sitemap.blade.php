@@ -3,18 +3,21 @@
 
     <url>
         <loc>{{ url('/') }}</loc>
+        <lastmod>{{ now()->toAtomString() }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
 
     <url>
         <loc>{{ route('vehicles.index') }}</loc>
+        <lastmod>{{ now()->toAtomString() }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>{{ route('contact.index') }}</loc>
+        <lastmod>{{ now()->toAtomString() }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>

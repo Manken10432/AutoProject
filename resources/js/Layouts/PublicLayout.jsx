@@ -57,7 +57,8 @@ function BottomQuoteBar() {
 }
 
 export default function PublicLayout({ children, title, description, ogType, ogImage, transparentNav = false }) {
-    const { url } = usePage();
+    const { url, props } = usePage();
+    const canonicalUrl = props.ziggy?.location || '';
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -82,11 +83,18 @@ export default function PublicLayout({ children, title, description, ogType, ogI
                 <title>{title || 'AutoGalería — Seminuevos de Calidad'}</title>
                 <meta name="description" content={description || 'AutoGalería — Los mejores seminuevos en Gómez Palacio, Durango.'} />
                 <meta name="robots" content="index, follow" />
+                {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
                 <meta property="og:type" content={ogType || 'website'} />
+                <meta property="og:site_name" content="AutoGalería" />
+                <meta property="og:locale" content="es_MX" />
                 <meta property="og:title" content={title || 'AutoGalería — Seminuevos de Calidad'} />
                 <meta property="og:description" content={description || 'AutoGalería — Los mejores seminuevos en Gómez Palacio, Durango.'} />
+                {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
                 {ogImage && <meta property="og:image" content={ogImage} />}
-                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+                <meta name="twitter:title" content={title || 'AutoGalería — Seminuevos de Calidad'} />
+                <meta name="twitter:description" content={description || 'AutoGalería — Los mejores seminuevos en Gómez Palacio, Durango.'} />
+                {ogImage && <meta name="twitter:image" content={ogImage} />}
             </Head>
 
             <div style={{ background: '#0c0c0c', minHeight: '100vh' }}>
@@ -105,7 +113,7 @@ export default function PublicLayout({ children, title, description, ogType, ogI
                             </Link>
 
                             {/* Desktop nav */}
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }} className="hidden md:flex">
+                            <div style={{ alignItems: 'center', gap: '2.5rem' }} className="hidden md:flex">
                                 <Link href={route('home')} className={`nav-link ${isActive('/') && !isActive('/seminuevos') && !isActive('/cotizacion') ? 'active' : ''}`}>Inicio</Link>
                                 <Link href={route('vehicles.index')} className={`nav-link ${isActive('/seminuevos') ? 'active' : ''}`}>Inventario</Link>
                                 <Link href={route('contact.index')} className={`nav-link ${isActive('/cotizacion') ? 'active' : ''}`}>Cotización</Link>

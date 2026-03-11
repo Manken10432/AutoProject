@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NuevoContacto;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class ContactController extends Controller
@@ -23,7 +25,12 @@ class ContactController extends Controller
             'message'    => 'nullable|string|max:2000',
         ]);
 
-        Contact::create($validated);
+        $contact = Contact::create($validated);
+
+        if (config('mail.admin_address')) {
+            Mail::to(config('mail.admin_address'))
+                ->send(new NuevoContacto($contact->load('vehicle')));
+        }
 
         return back()->with('success', '¡Gracias! Tu mensaje ha sido enviado. Te contactaremos pronto.');
     }

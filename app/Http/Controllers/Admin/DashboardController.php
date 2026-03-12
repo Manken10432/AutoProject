@@ -19,10 +19,12 @@ class DashboardController extends Controller
         ];
 
         $recentContacts = Contact::with('vehicle')->latest()->take(10)->get();
+        $unreadCount = Contact::whereNull('read_at')->count();
 
         return Inertia::render('Admin/Dashboard', [
             'stats'          => $stats,
             'recentContacts' => $recentContacts,
+            'unreadCount'    => $unreadCount,
         ]);
     }
 }

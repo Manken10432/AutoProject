@@ -1,7 +1,7 @@
 import { Link } from '@inertiajs/react';
 import AdminLayout from '@/Layouts/AdminLayout';
 
-export default function AdminDashboard({ stats, recentContacts }) {
+export default function AdminDashboard({ stats, recentContacts, unreadCount }) {
     const statCards = [
         { label: 'Total', value: stats.total, color: '#F5C518', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
         { label: 'Disponibles', value: stats.available, color: '#25D366', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
@@ -32,6 +32,14 @@ export default function AdminDashboard({ stats, recentContacts }) {
                 <Link href={route('admin.vehiculos.create')} className="btn-primary" style={{ fontSize: '0.75rem', padding: '0.625rem 1.25rem' }}>
                     + Agregar Vehículo
                 </Link>
+                <Link href={route('admin.contactos.index')} className="btn-ghost" style={{ fontSize: '0.75rem', padding: '0.625rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    Ver Solicitudes
+                    {unreadCount > 0 && (
+                        <span style={{ background: '#F5C518', color: '#0c0c0c', fontSize: '0.6rem', fontWeight: 700, padding: '0.1rem 0.4rem', borderRadius: 2 }}>
+                            {unreadCount}
+                        </span>
+                    )}
+                </Link>
                 <a href={route('vehicles.index')} target="_blank" rel="noreferrer" className="btn-ghost" style={{ fontSize: '0.75rem', padding: '0.625rem 1.25rem' }}>
                     Ver Inventario Público
                 </a>
@@ -40,12 +48,19 @@ export default function AdminDashboard({ stats, recentContacts }) {
             {/* Recent contacts */}
             <div style={{ background: '#141414', border: '1px solid #1c1c1c' }}>
                 <div style={{ padding: '1rem 1.375rem', borderBottom: '1px solid #1c1c1c', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>
-                        SOLICITUDES RECIENTES
-                    </h2>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#333' }}>
-                        Últimas {recentContacts.length}
-                    </span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#f0f0f0' }}>
+                            SOLICITUDES RECIENTES
+                        </h2>
+                        {unreadCount > 0 && (
+                            <span style={{ background: '#F5C518', color: '#0c0c0c', fontSize: '0.6rem', fontWeight: 700, padding: '0.15rem 0.5rem', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                                {unreadCount} nueva{unreadCount !== 1 ? 's' : ''}
+                            </span>
+                        )}
+                    </div>
+                    <Link href={route('admin.contactos.index')} style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#F5C518', textDecoration: 'none' }}>
+                        Ver todas &rsaquo;
+                    </Link>
                 </div>
 
                 {recentContacts.length > 0 ? (
@@ -53,28 +68,45 @@ export default function AdminDashboard({ stats, recentContacts }) {
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8125rem', whiteSpace: 'nowrap' }}>
                             <thead>
                                 <tr style={{ borderBottom: '1px solid #1c1c1c' }}>
-                                    {['Nombre', 'Teléfono', 'Email', 'Vehículo', 'Fecha'].map(h => (
+                                    {['Estado', 'Nombre', 'Teléfono', 'Email', 'Vehículo', 'Fecha', ''].map(h => (
                                         <th key={h} style={{ textAlign: 'left', padding: '0.75rem 1.125rem', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#444' }}>{h}</th>
                                     ))}
                                 </tr>
                             </thead>
                             <tbody>
                                 {recentContacts.map(contact => (
-                                    <tr key={contact.id} style={{ borderBottom: '1px solid #1a1a1a' }}>
-                                        <td style={{ padding: '0.875rem 1.125rem', fontWeight: 600, color: '#e0e0e0' }}>{contact.name}</td>
+                                    <tr key={contact.id} style={{ borderBottom: '1px solid #1a1a1a', background: !contact.read_at ? 'rgba(245,197,24,0.03)' : 'transparent' }}>
+                                        <td style={{ padding: '0.875rem 1.125rem' }}>
+                                            {contact.replied_at ? (
+                                                <span style={{ fontSize: '0.6rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#25D366', background: 'rgba(37,211,102,0.08)', border: '1px solid rgba(37,211,102,0.2)', padding: '0.15rem 0.4rem' }}>Respondida</span>
+                                            ) : contact.read_at ? (
+                                                <span style={{ fontSize: '0.6rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#555', background: '#1a1a1a', border: '1px solid #2a2a2a', padding: '0.15rem 0.4rem' }}>Leída</span>
+                                            ) : (
+                                                <span style={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#0c0c0c', background: '#F5C518', padding: '0.15rem 0.4rem' }}>Nueva</span>
+                                            )}
+                                        </td>
+                                        <td style={{ padding: '0.875rem 1.125rem', fontWeight: contact.read_at ? 400 : 700, color: '#e0e0e0' }}>{contact.name}</td>
                                         <td style={{ padding: '0.875rem 1.125rem', color: '#888' }}>{contact.phone}</td>
                                         <td style={{ padding: '0.875rem 1.125rem', color: '#888' }}>{contact.email}</td>
                                         <td style={{ padding: '0.875rem 1.125rem' }}>
                                             {contact.vehicle ? (
-                                                <a href={route('vehicles.show', contact.vehicle.id)} target="_blank" rel="noreferrer" style={{ color: '#F5C518', textDecoration: 'none', fontWeight: 600 }}>
+                                                <span style={{ color: '#F5C518', fontWeight: 600 }}>
                                                     {contact.vehicle.year} {contact.vehicle.brand} {contact.vehicle.model}
-                                                </a>
+                                                </span>
                                             ) : (
                                                 <span style={{ color: '#333' }}>General</span>
                                             )}
                                         </td>
                                         <td style={{ padding: '0.875rem 1.125rem', color: '#444', fontSize: '0.75rem' }}>
                                             {new Date(contact.created_at).toLocaleString('es-MX', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                                        </td>
+                                        <td style={{ padding: '0.875rem 1.125rem' }}>
+                                            <Link
+                                                href={route('admin.contactos.show', contact.id)}
+                                                style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#F5C518', textDecoration: 'none', padding: '0.3rem 0.625rem', border: '1px solid rgba(245,197,24,0.3)', background: 'rgba(245,197,24,0.06)' }}
+                                            >
+                                                Ver / Responder
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))}
